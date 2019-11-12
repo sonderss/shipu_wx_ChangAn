@@ -1,0 +1,24 @@
+{
+  "pages": [
+      
+    "pages/index/index",
+    "pages/logs/logs",
+    "pages/main/main",
+    "pages/detail/detail"
+ 
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "长安酒馆",
+    "navigationBarTextStyle": "black"
+  },
+  "usingComponents": {
+    "van-collapse": "/miniprogram_npm/vant-weapp/collapse/index",
+    "van-collapse-item": "/miniprogram_npm/vant-weapp/collapse-item/index",
+     "van-icon": "/miniprogram_npm/vant-weapp/icon/index",
+      "van-steps": "/miniprogram_npm/vant-weapp/steps/index",
+      "van-rate": "/miniprogram_npm/vant-weapp/rate/index"
+  }
+ 
+}

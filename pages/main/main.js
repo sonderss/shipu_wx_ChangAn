@@ -114,7 +114,7 @@ Page({
         wx.hideLoading()
         setTimeout(()=>{
           wx.showToast({
-            title: '网络不给力0_0',
+            title: '抱歉，此菜品未收录0_0',
             // icon: 'success',
             duration: 2000,
             image: '../../static/fail.png'

@@ -35,8 +35,10 @@ padding-left: 10rpx
   
 }
 .name{
-  margin-top: 20rpx;
-  margin-left: 20rpx
+  /* color: red; */
+  /* margin-top: 20rpx;*/
+ padding-left: 20rpx 
+  
 }
 .tags{
   display: flex;

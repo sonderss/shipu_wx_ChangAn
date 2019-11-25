@@ -9,7 +9,7 @@
             <view class="main_list"   wx:for="{{list}}" wx:key="{{index}}" > 
             <navigator url="../detail/detail?id={{item.id}}"  hover-class="navigator-hover">
             <image style="width:320rpx;height:320rpx"   mode='aspectFit' lazy-load='lazy_load' src="{{item.pic}}"></image>
-              <text class="name">{{item.name}}</text>
+              <text class="name" style="width: 100%;display:-webkit-box;-webkit-line-clamp:1;overflow:hidden;text-overflow:ellipsis;-webkit-box-orient:vertical;word-break:break-all;">{{item.name}}</text>
                   <view class="tags">
                           <view class="tag">
                             {{tags[index]}}

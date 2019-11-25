@@ -31,7 +31,7 @@
       <van-collapse  value="{{ activeNames }}" bind:change="onChange">
     
         <van-collapse-item clickable='true' title="美食简介" name="1" icon="shop-o">
-           <text>{{list.content}}</text>
+           <rich-text nodes="{{list.content}}"></rich-text>
         </van-collapse-item>
         <van-collapse-item clickable='true' title="食材准备" name="2" icon="records">
            <view class="table_view" style="width:100%;">
@@ -53,7 +53,8 @@
                   </view>
                   <view class="content_view">
                      <image lazy-load='{{islazy}}' mode='widthFix' style="width:400rpx"  src='{{item.pic}}'/>
-                     <text style="margin-top:30rpx">{{item.pcontent}}</text>
+                     <!-- <text style="margin-top:30rpx">{{item.pcontent}}</text> -->
+                      <rich-text style="margin-top:30rpx" nodes="{{item.pcontent}}"></rich-text>
                   </view>
                 
               </view>

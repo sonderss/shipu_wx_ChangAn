@@ -1,11 +1,9 @@
 {
   "pages": [
-      
     "pages/index/index",
     "pages/logs/logs",
     "pages/main/main",
     "pages/detail/detail"
- 
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -16,9 +14,9 @@
   "usingComponents": {
     "van-collapse": "/miniprogram_npm/vant-weapp/collapse/index",
     "van-collapse-item": "/miniprogram_npm/vant-weapp/collapse-item/index",
-     "van-icon": "/miniprogram_npm/vant-weapp/icon/index",
-      "van-steps": "/miniprogram_npm/vant-weapp/steps/index",
-      "van-rate": "/miniprogram_npm/vant-weapp/rate/index"
-  }
- 
+    "van-icon": "/miniprogram_npm/vant-weapp/icon/index",
+    "van-steps": "/miniprogram_npm/vant-weapp/steps/index",
+    "van-rate": "/miniprogram_npm/vant-weapp/rate/index"
+  },
+  "sitemapLocation": "sitemap51.json"
 }

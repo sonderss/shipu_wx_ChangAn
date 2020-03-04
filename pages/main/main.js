@@ -69,7 +69,15 @@ Page({
 
   },
   search:function(){
-    
+    if (!this.data.inputValue){
+      wx.showToast({
+        title: '空气不能吃哟',
+        // icon: 'success',
+        duration: 2000,
+        image: '../../static/smile.png'
+      })
+        return
+    }
     wx.showLoading({
       title: '加载中',
     })
@@ -114,7 +122,7 @@ Page({
         wx.hideLoading()
         setTimeout(()=>{
           wx.showToast({
-            title: '抱歉，此菜品未收录0_0',
+            title: '抱歉，您太挑食',
             // icon: 'success',
             duration: 2000,
             image: '../../static/fail.png'

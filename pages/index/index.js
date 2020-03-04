@@ -4,6 +4,8 @@ const app = getApp()
 
 Page({
   data: {
+    avatarUrl: '',
+    nickname: '',
     motto: '欢迎欢迎，热烈欢迎',
     userInfo: {},
     hasUserInfo: false,
@@ -55,6 +57,16 @@ Page({
    
     wx.navigateTo({
       url: '../main/main',
+    })
+  },
+  //获取信息
+  onGotUserInfo(e) {
+    console.log(e.detail.userInfo)
+    var userInfo = e.detail.userInfo
+    this.setData({
+      avatarUrl: userInfo.avatarUrl,
+      nickname: userInfo.nickName,
+      city: userInfo.city
     })
   }
 })

@@ -25,7 +25,7 @@
 	"compileType": "miniprogram",
 	"libVersion": "2.9.2",
 	"appid": "wx3c106149b6bcef83",
-	"projectname": "books",
+	"projectname": "foods",
 	"debugOptions": {
 		"hidedInDevtools": []
 	},

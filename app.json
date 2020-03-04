@@ -11,6 +11,24 @@
     "navigationBarTitleText": "长安酒馆",
     "navigationBarTextStyle": "black"
   },
+  "tabBar": {
+    "color": "black",
+    "selectedColor": "#7DA374",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "selectedIconPath": "./static/home_active.png",
+        "iconPath": "./static/home.png",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/main/main",
+        "selectedIconPath":"./static/book_active.png",
+        "iconPath": "./static/book.png",
+        "text": "食谱"
+      }
+    ]
+  },
   "usingComponents": {
     "van-collapse": "/miniprogram_npm/vant-weapp/collapse/index",
     "van-collapse-item": "/miniprogram_npm/vant-weapp/collapse-item/index",

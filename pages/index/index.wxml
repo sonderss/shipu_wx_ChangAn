@@ -1,17 +1,37 @@
 <!--index.wxml-->
-<view class="container">
-  <view class="userinfo">
-    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
-    <block wx:else>
+
+<view class="top_title">
+      <view class="img_view_top">
+          <image style="width:100%;height:100%" src='../../static/changan.jpg' />
+      </view>
+      <text style="margin-left:25rpx">长安酒馆</text>
+   </view>
+   <!-- 登录view -->
+   <view class="{{nickname.length<=0 ? 'login':' login  _right'}} " >
+       <text style="margin-left:20rpx" wx:if="{{nickname.length<=0}}">登录/获取更多信息</text>
+       <text wx:if="{{nickname.length>0}}"   class='_right' class='_right'>欢迎你，</text>
+       <text  wx:if="{{nickname.length>0}}" class='_right'>{{nickname}}</text>
+        <image wx:if="{{avatarUrl}}"  class='_right' style="width:90rpx;height:90rpx;border-radius:50%;margin:0 20rpx" src="{{avatarUrl}}" />
+       <button zh_CN wx:if='{{nickname.length<=0}}' bindgetuserinfo="onGotUserInfo" size='mini' class="btn" open-type="getUserInfo"  >Login</button>
+   </view>
+    <van-notice-bar
+      backgroundColor
+      left-icon="//img.yzcdn.cn/public_files/2017/8/10/6af5b7168eed548100d9041f07b7c616.png"
+      mode="closeable"
+      text="小程序改版啦！新增长安酒馆电影Logo以及全新风格大换血，更多精彩内容，请关注天空之外！！"
+    />
+  <!-- <view class="userinfo"> -->
+    <!-- <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button> -->
+    <!-- <block wx:else>
       <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
       <text class="userinfo-nickname">{{userInfo.nickName}}</text>
-    </block>
-  </view>
-  <view class="btn">
+    </block> -->
+  <!-- </view> -->
+  <!-- <view class="btn">
     <button bindtap='getMain' class="weui-btn" type="primary">进入主界面</button>
-  </view>
-  <view class="usermotto">
+  </view> -->
+  <!-- <view class="usermotto">
     <text class="user-motto">{{motto}}</text>
-  </view>
-    
-</view>
+  </view> -->
+  
+

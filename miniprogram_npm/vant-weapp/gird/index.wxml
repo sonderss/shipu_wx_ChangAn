@@ -1,0 +1,5 @@
+<!--miniprogram_npm/vant-weapp/gird/index.wxml-->
+<view class="gird" bindtap="evnetBack">
+  <text  class="iconfont {{icon ?  icon : '' }} {{size ? 'big' : 20 }}"></text>
+  <text>{{name}}</text>
+</view>

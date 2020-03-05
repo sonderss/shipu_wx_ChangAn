@@ -9,7 +9,8 @@ Page({
     motto: '欢迎欢迎，热烈欢迎',
     userInfo: {},
     hasUserInfo: false,
-    canIUse: wx.canIUse('button.open-type.getUserInfo')
+    canIUse: wx.canIUse('button.open-type.getUserInfo'),
+    list: [{ names: '历史的今天', icon: 'icon-lishijilu', size: '40' }, { names: '周公解梦', icon: 'icon-lishijilu', size: '40' }, { names: '影视检索', icon: 'icon-lishijilu', size: '40' }]
   },
   //事件处理函数
   bindViewTap: function() {
@@ -68,5 +69,22 @@ Page({
       nickname: userInfo.nickName,
       city: userInfo.city
     })
+  },
+  //组件回调事件
+  test(e){
+    let num = e.detail
+    if(num === "0"){
+      console.log(123)
+        wx.request({
+          url: 'http://zhouxunwang.cn/data/?id=60',
+          data: { key: 'V+3O/NEwQtv+ipKL9IkzQ23GMgTgsJeZ/px07Q', q: '美女'},
+          success:(res)=>{
+            console.log(res)
+          },
+          fail:(err)=>{
+            console.log(err)
+          }
+        })
+    }
   }
 })

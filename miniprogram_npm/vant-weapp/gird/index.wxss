@@ -1,0 +1,15 @@
+/* miniprogram_npm/vant-weapp/gird/index.wxss */
+@import '../../../static/wxss/iconfont.wxss';
+.gird{
+  width: 200rpx;
+  height: 220rpx;
+  display: flex;
+  background: #fff;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  border: 1rpx solid #1e2837
+}
+.big{
+  font-size: 100rpx
+}

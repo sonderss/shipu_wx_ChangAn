@@ -3,7 +3,8 @@
     "pages/index/index",
     "pages/logs/logs",
     "pages/main/main",
-    "pages/detail/detail"
+    "pages/detail/detail",
+    "miniprogram_npm/vant-weapp/gird/index"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -23,7 +24,7 @@
       },
       {
         "pagePath": "pages/main/main",
-        "selectedIconPath":"./static/book_active.png",
+        "selectedIconPath": "./static/book_active.png",
         "iconPath": "./static/book.png",
         "text": "食谱"
       }

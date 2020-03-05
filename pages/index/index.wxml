@@ -34,4 +34,10 @@
     <text class="user-motto">{{motto}}</text>
   </view> -->
   
+  <!-- 列表 -->
+  <view class="list-view">
+    <gird bindcustomevent='test' icon='{{item.icon}}'  wx:for='{{list}}' size='{{item.size}}' num='{{index}}' name='{{item.names}}'></gird>
+  </view>
+  
+
 

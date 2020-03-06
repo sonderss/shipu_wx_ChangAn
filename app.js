@@ -35,5 +35,22 @@ App({
   },
   globalData: {
     userInfo: null
+  },
+  get:function(url,data){
+    console.log(url,data)
+    return new Promise((resolve,reject)=>{
+      wx.request({
+        url: 'http://zhouxunwang.cn/data/?id=' + url,
+        data: {q:'美女'},
+        success:(res)=>{
+          // console.log(res)
+          resolve(res)
+        },
+        fail:(err)=>{
+          // console.log(err)
+          reject('请求错误',err)
+        }
+      })
+    })
   }
 })

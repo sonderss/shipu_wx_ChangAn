@@ -1,6 +1,7 @@
 //index.js
+let getDatas = require('../../utils/api');
 //获取应用实例
-const app = getApp()
+const app = getApp();
 
 Page({
   data: {
@@ -74,16 +75,10 @@ Page({
   test(e){
     let num = e.detail
     if(num === "0"){
-      console.log(123)
-        wx.request({
-          url: 'http://zhouxunwang.cn/data/?id=60',
-          data: { key: 'V+3O/NEwQtv+ipKL9IkzQ23GMgTgsJeZ/px07Q', q: '美女'},
-          success:(res)=>{
-            console.log(res)
-          },
-          fail:(err)=>{
-            console.log(err)
-          }
+      let data = {q:'美女'}
+      getDatas.getDreamData(data)
+        .then(res=>{
+          console.log(res)
         })
     }
   }

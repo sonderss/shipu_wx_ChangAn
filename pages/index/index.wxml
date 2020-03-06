@@ -18,7 +18,7 @@
       backgroundColor
       left-icon="//img.yzcdn.cn/public_files/2017/8/10/6af5b7168eed548100d9041f07b7c616.png"
       mode="closeable"
-      text="小程序改版啦！新增长安酒馆电影Logo以及全新风格大换血，更多精彩内容，请关注天空之外！！"
+      text="小程序改版啦！新增长安酒馆电影Logo以及全新风格大换血，更多精彩内容，请关注天空之外！！！"
     />
   <!-- <view class="userinfo"> -->
     <!-- <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button> -->

@@ -7,10 +7,6 @@
 	<text style="margin-left:25rpx">历史上的今天( {{date}} )</text>
 </view>
 
-<view class="skeleton-one" wx:if="{{!isSkeleton}}">
-<van-skeleton title row="3" />
-</view>
-
 
 <view class="skeleton" wx:if="{{!isSkeleton}}">
 <van-skeleton title row="6" />

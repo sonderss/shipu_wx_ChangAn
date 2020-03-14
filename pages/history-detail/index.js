@@ -70,5 +70,9 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+  // 图片错误
+  img_err(e){
+    console.log(e)
   }
 })

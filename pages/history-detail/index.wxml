@@ -8,7 +8,7 @@
 </view>
 
 <view class="image_view">
-	<image style="" src='{{data.pic}}' />
+	<image style="" src="{{data.pic.length !== 0 ? data.pic : '../../static/404.png'}}"  binderror='img_err' />
 </view>
 <view class="p_lr_20 m-top-20" >
 <rich-text class="text_view" nodes="{{data.des}}">

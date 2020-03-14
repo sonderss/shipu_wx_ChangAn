@@ -1,0 +1,19 @@
+<!--pages/history-detail/index.wxml-->
+<view class="content">
+<view class="top_title" >
+	<view class="img_view_top">
+		<image style="width:100%;height:100%" src='../../static/changan.jpg' />
+	</view>
+	<text style="margin-left:25rpx;flex:1">{{data.title}}</text>
+</view>
+
+<view class="image_view">
+	<image style="" src='{{data.pic}}' />
+</view>
+<view class="p_lr_20 m-top-20" >
+<rich-text class="text_view" nodes="{{data.des}}">
+    123
+</rich-text>
+</view>
+
+</view>

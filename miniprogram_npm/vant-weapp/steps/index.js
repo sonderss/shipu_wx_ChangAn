@@ -13,5 +13,11 @@ VantComponent({
             type: String,
             value: GREEN
         }
+    },
+    methods:{
+        emitIndex: function(e){
+            this.triggerEvent('text',e.currentTarget.dataset.index)
+        }
     }
+    
 });

@@ -1,0 +1,16 @@
+/* pages/history/index.wxss */
+.history{
+margin-top:200rpx
+
+}
+.skeleton-one{
+    width:100%;
+    height:auto;
+}
+.skeleton{
+    width:100%;
+    height:auto;
+    margin: 200rpx auto;
+
+    
+}

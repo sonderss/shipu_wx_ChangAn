@@ -1,0 +1,10 @@
+{
+
+    "usingComponents": {
+  "van-steps": "/miniprogram_npm/vant-weapp/steps/index",
+  "van-skeleton": "/miniprogram_npm/vant-weapp/skeleton/index",
+  "van-toast": "/miniprogram_npm/vant-weapp/toast/index"
+
+  }
+
+}

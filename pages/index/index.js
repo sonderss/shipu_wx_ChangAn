@@ -1,8 +1,7 @@
 //index.js
-let getDatas = require('../../utils/api');
 //获取应用实例
 const app = getApp();
-
+let utils = require('../../utils/util');
 Page({
   data: {
     avatarUrl: '',
@@ -11,7 +10,8 @@ Page({
     userInfo: {},
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
-    list: [{ names: '历史的今天', icon: 'icon-lishijilu', size: '40' }, { names: '周公解梦', icon: 'icon-lishijilu', size: '40' }, { names: '影视检索', icon: 'icon-lishijilu', size: '40' }]
+    list: [{ names: '历史上的今天', icon: 'icon-lishijilu', size: '40' }]
+    // , { names: '周公解梦', icon: 'icon-lishijilu', size: '40' }, { names: '影视检索', icon: 'icon-lishijilu', size: '40' }
   },
   //事件处理函数
   bindViewTap: function() {
@@ -74,12 +74,23 @@ Page({
   //组件回调事件
   test(e){
     let num = e.detail
+    // 第一项为历史上的今天
     if(num === "0"){
-      let data = {q:'美女'}
-      getDatas.getDreamData(data)
-        .then(res=>{
-          console.log(res)
-        })
+      // let data = {q:'美女'}
+      // getDatas.getDreamData(data)
+      //   .then(res=>{
+      //     console.log(res)
+      //   })
+      let time = JSON.stringify(utils.getTime()) 
+      wx.navigateTo({
+        url:  `../history/index?date=${time}`
+      })
     }
-  }
+  },
+   /**
+   * 用户点击右上角分享
+   */
+  onShareAppMessage: function () {
+
+  },
 })

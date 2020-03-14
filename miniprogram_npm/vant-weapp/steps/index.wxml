@@ -6,10 +6,12 @@
       wx:for="{{ steps }}"
       wx:key="index"
       class="{{ utils.bem('step', [direction, status(index, active)]) }} van-hairline"
+      bindtap="emitIndex"
+      data-index= "{{index}}"
     >
       <view class="van-step__title" style="{{ index === active ? 'color: ' + activeColor : '' }}">
-        <view>{{ item.text }}</view>
-        <view>{{ item.desc }}</view>
+        <view>{{ item.year }}年</view>
+        <view>{{ item.title }}</view>
       </view>
       <view class="van-step__circle-container">
         <view class="van-step__circle" wx:if="{{ index !== active }}" style="{{ index < active ? 'background-color: ' + activeColor : '' }}" />

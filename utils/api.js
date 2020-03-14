@@ -13,7 +13,7 @@ export function post(url,data,callback){
 }
 // import { request } from './util';
 
-// 获取数据
+// 获取周工解梦数据
 let app = getApp()
 const getDreamData = data =>{
   return new Promise((resolve,reject)=>{
@@ -23,10 +23,19 @@ const getDreamData = data =>{
       resolve(res)
     })
   })
-   
+}
+// 历史上的今天
+const getHistory = data => {
+  return new Promise((resolve,reject) => {
+    app.get('36&key=Xe+U+YRgHI7+ipKL9IkzQ23GMgTgsJeZ/pxx6w&v=1.0',data)
+      .then(res=> {
+         resolve(res)
+      })
+  })
 }
 
 module.exports = {
   // formatTime: formatTime
-  getDreamData
+  getDreamData,
+  getHistory
 }

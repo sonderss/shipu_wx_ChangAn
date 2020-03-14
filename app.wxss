@@ -46,5 +46,28 @@
 .icon-wan:before {
   content: "\e625";
 }
-
+.top_title{
+  width: 100%;
+  height: 200rpx;
+  background: #1e2837;
+  font-family: "helvetica neue","微软雅黑";
+  color: #fff;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  position: fixed; 
+  top:0;
+  z-index:999
+}
+.img_view_top{
+  width: 150rpx;
+  height: 150rpx;
+  margin-left: 20rpx
+}
+.p_lr_20{
+  padding: 0 20rpx;
+}
+.m-top-20{
+  margin-top:20rpx
+}
 

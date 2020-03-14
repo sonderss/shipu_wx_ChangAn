@@ -1,0 +1,36 @@
+<!--pages/history/index.wxml-->
+
+<view class="top_title" >
+	<view class="img_view_top">
+		<image style="width:100%;height:100%" src='../../static/changan.jpg' />
+	</view>
+	<text style="margin-left:25rpx">历史上的今天( {{date}} )</text>
+</view>
+
+<view class="skeleton-one" wx:if="{{!isSkeleton}}">
+<van-skeleton title row="3" />
+</view>
+
+
+<view class="skeleton" wx:if="{{!isSkeleton}}">
+<van-skeleton title row="6" />
+</view>
+
+<view class="skeleton" wx:if="{{!isSkeleton}}">
+<van-skeleton title row="3" />
+</view>
+
+<view class="history">
+	
+	<van-steps
+	 steps="{{ steps }}"
+	 active="{{ active }}"
+	 direction="vertical"
+	 active-color="#1e2837"
+	 inactive-color="red"
+     id="ttt"
+     bind:text = 'test1'
+	/>
+</view>
+
+

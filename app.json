@@ -4,7 +4,10 @@
     "pages/logs/logs",
     "pages/main/main",
     "pages/detail/detail",
-    "miniprogram_npm/vant-weapp/gird/index"
+    "miniprogram_npm/vant-weapp/gird/index",
+    "pages/history/index",
+    "miniprogram_npm/vant-weapp/history-detail/index",
+    "pages/history-detail/index"
   ],
   "window": {
     "backgroundTextStyle": "light",

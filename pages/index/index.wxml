@@ -1,6 +1,6 @@
 <!--index.wxml-->
 
-<view class="top_title">
+    <view class="top_title">
       <view class="img_view_top">
           <image style="width:100%;height:100%" src='../../static/changan.jpg' />
       </view>
@@ -36,7 +36,7 @@
   
   <!-- 列表 -->
   <view class="list-view">
-    <gird bindcustomevent='test' icon='{{item.icon}}'  wx:for='{{list}}' size='{{item.size}}' num='{{index}}' name='{{item.names}}'></gird>
+    <gird bindcustomevent='test' icon='{{item.icon}}'  wx:for='{{list}}' wx:key="{{index}}" size='{{item.size}}' num='{{index}}' name='{{item.names}}'></gird>
   </view>
   
 

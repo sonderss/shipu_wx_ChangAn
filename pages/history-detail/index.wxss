@@ -1,0 +1,22 @@
+/* pages/history-detail/index.wxss */
+page{
+     background:#1e2837;
+}
+.image_view{
+    width:100%;
+    height:auto;
+    margin-top:200rpx;
+    padding:30rpx 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}
+.text_view{
+width:100%;
+height:auto;
+display:flex;
+ justify-content: center;
+ text-align:center;
+ color:#fff
+}

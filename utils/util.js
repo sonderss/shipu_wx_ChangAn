@@ -30,7 +30,21 @@ const request = (option)=>{
   })
 }
 
+// 获取时间
+const getTime = () => {
+    let t = new Date()
+    let month = t.getMonth() + 1
+    let day =  t.getDate()
+    return {month,day}
+}
+// 获取access_token
+//  url: 'https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential', //仅为示例，并非真实的接口地址
+ // 获取图文列表
+ // url:`https://api.weixin.qq.com/cgi-bin/material/batchget_material?access_token=access_token`,
+    
+
 module.exports = {
   // formatTime: formatTime
-  request:request
+  request:request,
+  getTime
 }

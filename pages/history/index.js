@@ -2,7 +2,6 @@
 let getDatas = require('../../utils/api');
 const app =  getApp();
 Page({
-
   /**
    * 页面的初始数据
    */
@@ -10,7 +9,8 @@ Page({
     steps: [],
     active: 0,
     date:'',
-    isSkeleton:false
+    isSkeleton:false,
+    bgColor:''
   },
   onPullDownRefresh: function () {
   },
@@ -20,7 +20,7 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
+   onLoad(options) {
     let data ={
       month:JSON.parse(options.date).month,
       day:JSON.parse(options.date).day
@@ -29,24 +29,65 @@ Page({
       date:data.month + '月' + data.day+'日'
     })
      if(app.globalData.historyList.length !== 0){
+       console.log('本地数据')
       this.setData({
         steps:app.globalData.historyList,
         active:app.globalData.historyList.length,
         isSkeleton:true
       })
      }else{
-           getDatas.getHistory(data).then(res=>{
-            this.setData({
-              steps:res.data.result,
-              active:res.data.result.length,
-              isSkeleton:true
+          wx.cloud.callFunction({
+            name: "method",
+            data:data
+          }).then(res => {
+            // console.log('云函数返回的数据')
+            // console.log(res)
+            // let result = JSON.parse(res.result)
+            // console.log(result.result)
+            if (typeof JSON.parse(res.result) !== 'object') {
+                wx.setNavigationBarColor({
+                  frontColor: '#ffffff',
+                  backgroundColor: '#1e2837',
+                })
+                this.setData({
+                  bgColor: '#1e2837',
+                  isSkeleton: true
+                })
+                return
+              }
+              this.setData({
+                steps: JSON.parse(res.result).result,
+                active: JSON.parse(res.result).result.length,
+                isSkeleton:true
+              })
+            app.globalData.historyList = JSON.parse(res.result).result
             })
-            app.globalData.historyList = res.data.result
-
-          })
      }
-   
+          // 正常请求http接口的业务代码
+          //  getDatas.getHistory(data).then(res=>{
+          //    console.log(res)
+          //    if (typeof res.data !== 'object'){
+          //      wx.setNavigationBarColor({
+          //        frontColor: '#ffffff',
+          //        backgroundColor: '#1e2837',
+          //      })
+          //     this.setData({
+          //       bgColor: '#1e2837',
+          //       isSkeleton: true
+          //     })
+          //     return
+          //   }
+          //   this.setData({
+          //     steps:res.data.result,
+          //     active:res.data.result.length,
+          //     isSkeleton:true
+          //   })
+          //   app.globalData.historyList = res.data.result
 
+          // })
+        
+   
+     
   },
 
   /**

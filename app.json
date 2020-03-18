@@ -7,7 +7,10 @@
     "miniprogram_npm/vant-weapp/gird/index",
     "pages/history/index",
     "miniprogram_npm/vant-weapp/history-detail/index",
-    "pages/history-detail/index"
+    "pages/history-detail/index",
+    "pages/mine/index"
+
+   
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -30,6 +33,12 @@
         "selectedIconPath": "./static/book_active.png",
         "iconPath": "./static/book.png",
         "text": "食谱"
+      },
+      {
+        "pagePath": "pages/mine/index",
+        "selectedIconPath": "./static/my_active.png",
+        "iconPath": "./static/my.png",
+        "text": "我的"
       }
     ]
   },

@@ -1,0 +1,14 @@
+<!--pages/mine/index.wxml-->
+<view class="top_title">
+    <view class="img_view_top">
+        <image style="width:100%;height:100%;border-radius:50%" src="{{userInfo.avatarUrl ? userInfo.avatarUrl : '../../static/changan.jpg' }}"  />
+    </view>
+    <text style="margin-left:25rpx">{{userInfo.nickName ? userInfo.nickName : '长安酒馆' }}</text>
+</view>
+<view class="image_view">
+	<image style="" src="../../static/404.png"  />
+</view>
+<view class="desc">
+<button class="btn" style=" width: 300rpx;height: 80rpx;background-color: #1e2837;text-align:center;line-height: 80rpx;color:#fff;border:2rpx solid #fff" plain="true" open-type="contact" size="mini" type="primary">爆肝中，请留言</button>
+</view>
+

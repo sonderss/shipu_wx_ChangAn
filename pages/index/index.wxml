@@ -12,7 +12,7 @@
        <text wx:if="{{nickname.length>0}}"   class='_right' class='_right'>欢迎你，</text>
        <text  wx:if="{{nickname.length>0}}" class='_right'>{{nickname}}</text>
         <image wx:if="{{avatarUrl}}"  class='_right' style="width:90rpx;height:90rpx;border-radius:50%;margin:0 20rpx" src="{{avatarUrl}}" />
-       <button zh_CN wx:if='{{nickname.length<=0}}' bindgetuserinfo="onGotUserInfo" size='mini' class="btn" open-type="getUserInfo"  >Login</button>
+       <button  wx:if='{{nickname.length<=0}}' bindgetuserinfo="onGotUserInfo" size='mini' class="btn" open-type="getUserInfo"  >Login</button>
    </view>
     <van-notice-bar
       backgroundColor

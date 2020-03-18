@@ -12,7 +12,6 @@
 </view>
 <view class="p_lr_20 m-top-20" >
 <rich-text class="text_view" nodes="{{data.des}}">
-    123
 </rich-text>
 </view>
 

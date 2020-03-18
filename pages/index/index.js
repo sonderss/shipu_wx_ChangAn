@@ -63,12 +63,21 @@ Page({
   },
   //获取信息
   onGotUserInfo(e) {
-    console.log(e.detail.userInfo)
     var userInfo = e.detail.userInfo
+    app.globalData.userInfo = userInfo
+    // console.log('用户信息',app.globalData.userInfo)
     this.setData({
       avatarUrl: userInfo.avatarUrl,
       nickname: userInfo.nickName,
       city: userInfo.city
+    })
+    // console.log(app._openid)
+    utils.searchUserInfo(app._openid)
+      .then(res=>{
+        console.log(res)
+        if(res.data.length === 0){
+          utils.addUserInfo(app.globalData.userInfo)
+        }
     })
   },
   //组件回调事件

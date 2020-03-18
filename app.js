@@ -13,6 +13,15 @@ App({
     wx.login({
       success: res => {
         // 发送 res.code 到后台换取 openId, sessionKey, unionId
+        // console.log(res) https://api.weixin.qq.com/sns/jscode2session
+        wx.request({
+            url:'https://api.weixin.qq.com/sns/jscode2session',
+            data:{appid:'wx3c106149b6bcef83',secret:"ca6b5b1a911b1b8c2573648060c76ac8",js_code:res.code,grant_type:"authorization_code"},
+            success:res=>{
+              this._openid = res.data.openid
+              // console.log(this._openid)
+            }
+        })
       }
     })
     // 获取用户信息
@@ -24,20 +33,23 @@ App({
             success: res => {
               // 可以将 res 发送给后台解码出 unionId
               this.globalData.userInfo = res.userInfo
-
+           
+              // console.log(this.globalData.userInfo)
               // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
               // 所以此处加入 callback 以防止这种情况
               if (this.userInfoReadyCallback) {
-                this.userInfoReadyCallback(res)
+                this.userInfoReadyCallback(res);
               }
             }
           })
         }
       }
     })
+    // console.log('app', this.globalData.userInfo)
   },
+  _openid:'',
   globalData: {
-    userInfo: null,
+    userInfo: {},
     historyList:[],
     access_token:''
   },

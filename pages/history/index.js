@@ -41,9 +41,9 @@ Page({
             data:data
           }).then(res => {
             // console.log('云函数返回的数据')
-            console.log(res)
-            console.log(res.result)
-            console.log(res.result.length)
+            // console.log(res)
+            // console.log(res.result)
+            // console.log(res.result.length)
             // let result = JSON.parse(res.result)
             // console.log(result.result)
             if (res.result === '00006' || res.result.length <= 6) {

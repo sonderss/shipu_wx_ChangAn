@@ -75,15 +75,33 @@ const addUserInfo = (data) => {
       openid: data._openid
     }
   }).then(res=>{
-    console.log(res)
+    console.log('添加用户成功',res)
   })
 }
 
-
+// 更新用户
+const updata = (openId,data) =>{
+  db.collection('userInfo').where({
+    _openid: openId
+  }).update({
+    data: {
+      avatarUrl: data.avatarUrl,
+      city: data.city,
+      country: data.country,
+      gender: data.gender,
+      language: data.language,
+      nickName: data.nickName,
+      province: data.province,
+    },
+  }).then(res=>{
+    console.log('更新用户成功',res)
+  })
+}
 module.exports = {
   // formatTime: formatTime
   request:request,
   getTime,
   addUserInfo,
-  searchUserInfo
+  searchUserInfo,
+  updata
 }

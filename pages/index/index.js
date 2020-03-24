@@ -4,10 +4,8 @@ const app = getApp();
 let utils = require('../../utils/util');
 Page({
   data: {
-    avatarUrl: '',
-    nickname: '',
     motto: '欢迎欢迎，热烈欢迎',
-    userInfo: {},
+    userInfo: { nickName:''},
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
     list: [{ names: '历史上的今天', icon: 'icon-lishijilu', size: '40' }]
@@ -21,30 +19,21 @@ Page({
   },
   onLoad: function () {
     if (app.globalData.userInfo) {
-      this.setData({
-        userInfo: app.globalData.userInfo,
-        hasUserInfo: true
-      })
-    } else if (this.data.canIUse){
-      // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
-      // 所以此处加入 callback 以防止这种情况
-      app.userInfoReadyCallback = res => {
+      if (app.globalData.userInfo.nickName){
         this.setData({
-          userInfo: res.userInfo,
+          userInfo: app.globalData.userInfo,
           hasUserInfo: true
         })
-      }
-    } else {
-      // 在没有 open-type=getUserInfo 版本的兼容处理
-      wx.getUserInfo({
-        success: res => {
-          app.globalData.userInfo = res.userInfo
+      }else{
+          // 这里是解决app里onLaunch还没执行完，该页面就执行，从而获取不到全局数据的问题
+        app.testCallBack = res =>{
+          // console.log(res)
           this.setData({
-            userInfo: res.userInfo,
-            hasUserInfo: true
+            userInfo: res,
           })
         }
-      })
+      }
+      
     }
   },
   getUserInfo: function(e) {
@@ -67,16 +56,19 @@ Page({
     app.globalData.userInfo = userInfo
     // console.log('用户信息',app.globalData.userInfo)
     this.setData({
-      avatarUrl: userInfo.avatarUrl,
-      nickname: userInfo.nickName,
+      userInfo: e.detail.userInfo,
       city: userInfo.city
     })
-    // console.log(app._openid)
+    // 查找用户
     utils.searchUserInfo(app._openid)
       .then(res=>{
-        console.log(res)
+        // console.log(res)
         if(res.data.length === 0){
+          // 添加用户信息
           utils.addUserInfo(app.globalData.userInfo)
+        }else{
+          // 更新用户信息
+          utils.updata(app._openid, userInfo)
         }
     })
   },
@@ -85,11 +77,6 @@ Page({
     let num = e.detail
     // 第一项为历史上的今天
     if(num === "0"){
-      // let data = {q:'美女'}
-      // getDatas.getDreamData(data)
-      //   .then(res=>{
-      //     console.log(res)
-      //   })
       let time = JSON.stringify(utils.getTime()) 
       wx.navigateTo({
         url:  `../history/index?date=${time}`

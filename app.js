@@ -33,8 +33,29 @@ App({
             success: res => {
               // 可以将 res 发送给后台解码出 unionId
               this.globalData.userInfo = res.userInfo
+              if (this.testCallBack){
+                this.testCallBack(res.userInfo)
+              }
               console.log('已经授权，可以直接调用 getUserInfo 获取头像昵称，不会弹框')
-              // console.log(this.globalData.userInfo)
+              console.log(this.globalData.userInfo)
+              // 更新用户信息
+              const db = wx.cloud.database()
+              db.collection('userInfo').where({
+                _openid: this._openid
+              }).update({
+                data: {
+                  avatarUrl: res.userInfo.avatarUrl,
+                  city: res.userInfo.city,
+                  country: res.userInfo.country,
+                  gender: res.userInfo.gender,
+                  language: res.userInfo.language,
+                  nickName: res.userInfo.nickName,
+                  province: res.userInfo.province,
+                },
+              }).then(res => {
+                console.log('更新用户成功', res)
+              })
+              //  utils.updata(this._openid, this.globalData.userInfo)
               // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
               // 所以此处加入 callback 以防止这种情况
               if (this.userInfoReadyCallback) {
@@ -49,9 +70,12 @@ App({
   },
   _openid:'',
   globalData: {
-    userInfo: {},
+    userInfo: {nickName:''},
     historyList:[],
     access_token:''
+  },
+  testCallBack(data){
+      return data
   },
   get:function(url,data){
     console.log(url,data)

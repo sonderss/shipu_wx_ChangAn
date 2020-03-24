@@ -7,18 +7,18 @@
       <text style="margin-left:25rpx">长安酒馆</text>
    </view>
    <!-- 登录view -->
-   <view class="{{nickname.length<=0 ? 'login':' login  _right'}} " >
-       <text style="margin-left:20rpx" wx:if="{{nickname.length<=0}}">登录/获取更多信息</text>
-       <text wx:if="{{nickname.length>0}}"   class='_right' class='_right'>欢迎你，</text>
-       <text  wx:if="{{nickname.length>0}}" class='_right'>{{nickname}}</text>
-        <image wx:if="{{avatarUrl}}"  class='_right' style="width:90rpx;height:90rpx;border-radius:50%;margin:0 20rpx" src="{{avatarUrl}}" />
-       <button  wx:if='{{nickname.length<=0}}' bindgetuserinfo="onGotUserInfo" size='mini' class="btn" open-type="getUserInfo"  >Login</button>
+   <view class="{{userInfo.nickName.length<=0 ? 'login':' login  _right'}} " >
+       <text style="margin-left:20rpx" wx:if="{{userInfo.nickName.length<=0}}">登录/获取更多信息</text>
+       <text wx:if="{{userInfo.nickName.length}}"   class='_right' >欢迎你，</text>
+       <text  wx:if="{{userInfo.nickName.length}}" class='_right'>{{userInfo.nickName}}</text>
+        <image wx:if="{{userInfo.avatarUrl}}"  class='_right' style="width:90rpx;height:90rpx;border-radius:50%;margin:0 20rpx" src="{{userInfo.avatarUrl}}" />
+       <button  wx:if='{{userInfo.nickName.length<=0}}' bindgetuserinfo="onGotUserInfo" size='mini' class="btn" open-type="getUserInfo"  >Login</button>
    </view>
     <van-notice-bar
       backgroundColor
       left-icon="//img.yzcdn.cn/public_files/2017/8/10/6af5b7168eed548100d9041f07b7c616.png"
       mode="closeable"
-      text="小程序改版啦！新增长安酒馆电影Logo以及全新风格大换血，更多精彩内容，请关注天空之外！！！"
+      text="小程序改版啦！新增长安酒馆Logo以及全新风格大换血，更多精彩内容，请关注公众号天空之外！！！"
     />
   <!-- <view class="userinfo"> -->
     <!-- <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button> -->

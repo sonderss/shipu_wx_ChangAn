@@ -50,7 +50,6 @@
       send-message-img="{{ sendMessageImg }}"
       show-message-card="{{ showMessageCard }}"
       app-parameter="{{ appParameter }}"
-
       bind:click="onConfirm"
       bindgetuserinfo="bindGetUserInfo"
       bindcontact="bindContact"

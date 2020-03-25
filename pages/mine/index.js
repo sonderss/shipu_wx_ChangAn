@@ -1,12 +1,17 @@
 // pages/mine/index.js
 const app =  getApp();
+const utils =require('../../utils/util');
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-      userInfo:{}
+      userInfo:{},
+      sign:'',
+      show:false,
+      num:Number,
+      sign_set_txt:'' //设置的签名信息
   },
 
   /**
@@ -15,15 +20,48 @@ Page({
   onLoad: function (options) {
       // console.log(app.globalData.userInfo)
       this.setData({
-        userInfo: {}
+        userInfo: app.globalData.userInfo,
+        num:'数据获取中...'
       })
+     // 判断用户是否授权
+      if (app.scope_userInfo){
+          // 授权
+        utils.searchUserInfo(app._openid)
+          .then(res=>{
+            // console.log('查询成功',res)
+            this.setData({
+              sign: res.data[res.data.length-1].sign
+            })
+          })
+          utils.getIndex(app._openid).then(res=>{
+            for (let [index,val] of res.data.entries()){
+              // console.log(val,index)
+              if (val._openid === app._openid){
+                  this.setData({
+                    num: index+1
+                  })
+              }
+            }
+            if(this.data.num < 100){
+                this.setData({
+                  num : '00'+ this.data.num
+                })
+            }
+          }).catch(err=>{
+            this.setData({
+              num:''
+            })
+          })
+      }
+      
+    
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
+     
   },
 
   /**
@@ -66,5 +104,36 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+  close(){
+      this.setData({
+        show: false
+      })
+  },
+  modalinput(){
+    console.log(this.data.show)
+    this.setData({
+      show:!this.data.show
+    })
+  },
+  // 获取输入框的值
+  getValue(e){
+    console.log(e.detail.value)
+    this.setData({ sign_set_txt:e.detail.value})
+  },
+  // 修改签名
+  set_sign(){
+    console.log(this.data.sign_set_txt)
+    if (this.data.sign_set_txt){
+        utils.setSign(app._openid, this.data.sign_set_txt)
+         .then(res=>{
+            this.setData({
+              sign: this.data.sign_set_txt
+            })
+         })
+    }else{
+      this.setData({ show: true })
+    }
+    
   }
 })

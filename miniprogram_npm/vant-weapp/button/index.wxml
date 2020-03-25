@@ -22,6 +22,7 @@
   binderror="bindError"
   bindlaunchapp="bindLaunchApp"
   bindopensetting="bindOpenSetting"
+ 
 >
   <block wx:if="{{ loading }}">
     <van-loading

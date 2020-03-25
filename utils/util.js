@@ -97,11 +97,53 @@ const updata = (openId,data) =>{
     console.log('更新用户成功',res)
   })
 }
+
+// 修改用户签名
+const setSign = (id,sign) => {
+  return new Promise((resolve,reject) =>{
+      db.collection('userInfo').where({
+        _openid: id
+      }).update({
+        data:{
+          sign: sign
+        }
+      })
+      .then(res=>{
+        resolve(res)
+      })
+      .catch(err=>{
+        reject(err)
+      })
+  })
+}
+// 获取索引
+const getIndex = async  (id) =>{
+  // 获取数据总数
+  const resultTotal =  await db.collection('userInfo').count()
+  // console.log(resultTotal.total)
+  // 判断需要几次获取  小程序一次20条 云函数是100条
+  const nums = Math.ceil(resultTotal.total / 20) 
+  // 承载所有读操作的 promise 的数组
+  const tasks = []
+  for (let i = 0; i < nums ;i++){
+    const promise = db.collection('userInfo').skip(i * 20).limit(20).get()
+    tasks.push(promise)
+  }
+  // 等待所有
+  return (await Promise.all(tasks)).reduce((acc, cur) => {
+    return {
+      data: acc.data.concat(cur.data),
+      errMsg: acc.errMsg,
+    }
+  })
+}
 module.exports = {
   // formatTime: formatTime
   request:request,
   getTime,
   addUserInfo,
   searchUserInfo,
-  updata
+  updata,
+  setSign,
+  getIndex
 }

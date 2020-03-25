@@ -36,6 +36,7 @@ App({
               if (this.testCallBack){
                 this.testCallBack(res.userInfo)
               }
+              this.scope_userInfo = true
               console.log('已经授权，可以直接调用 getUserInfo 获取头像昵称，不会弹框')
               console.log(this.globalData.userInfo)
               // 更新用户信息
@@ -68,6 +69,7 @@ App({
     })
     // console.log('app', this.globalData.userInfo)
   },
+  scope_userInfo:false,
   _openid:'',
   globalData: {
     userInfo: {nickName:''},

@@ -32,7 +32,7 @@
 <view class="div_mid">
   <view class="div_mid_card">
     <view class="sign">
-      <text style="width:70rpx">签名:</text>
+      <text style="width:auto">签名:</text>
       <text class="sign_txt">{{sign ? sign : '快来设置你的个性签名吧...'}}</text>
     </view>
     <text class="iconfont icon-xiugai icon_set" bindtap="modalinput"></text>
@@ -49,9 +49,7 @@
   confirm-button-text="提 交"
   cancel-button-text="算 了"
 >
-  <view class="oinput">
-     <input class="weui-input" maxlength="20" bindinput="getValue" auto-focus placeholder="快来设置你的个性签名吧..."/>
+ <view class="oinput">
+     <input   cursor-spacing='20'  class="w_input" maxlength="20" bindinput="getValue"  placeholder="快来设置你的个性签名吧..." />
   </view>
-</van-dialog>
-
-
+</van-dialog> 

@@ -126,12 +126,14 @@ overflow:hidden;text-overflow:ellipsis;
 }
 .oinput{
   width: 100%;
-  height: 100rpx;
+  height:100rpx;
 }
-.weui-input{
-  display: block;
+.oinput .w_input{
+  display:block;
   width: 100%;
-  height: 100rpx;
+  height: 100%;
   text-align: center;
-  line-height: 100rpx
+  line-height: 100rpx;
+  font-size: 30rpx;
+  min-height: 1rem;
 }

@@ -25,18 +25,17 @@ App({
       }
     })
     // 获取用户信息
-    wx.getSetting({
+   wx.getSetting({
       success: res => {
         if (res.authSetting['scope.userInfo']) {
           // 已经授权，可以直接调用 getUserInfo 获取头像昵称，不会弹框
           wx.getUserInfo({
-            success: res => {
+             success:  res => {
               // 可以将 res 发送给后台解码出 unionId
               this.globalData.userInfo = res.userInfo
               if (this.testCallBack){
                 this.testCallBack(res.userInfo)
               }
-              this.scope_userInfo = true
               console.log('已经授权，可以直接调用 getUserInfo 获取头像昵称，不会弹框')
               console.log(this.globalData.userInfo)
               // 更新用户信息
@@ -65,6 +64,9 @@ App({
             }
           })
         }
+      },
+      fail:err=>{
+        this.globalData.userInfo = {}
       }
     })
     // console.log('app', this.globalData.userInfo)
@@ -78,6 +80,9 @@ App({
   },
   testCallBack(data){
       return data
+  },
+  scopeInfo(data){
+    return data
   },
   get:function(url,data){
     console.log(url,data)

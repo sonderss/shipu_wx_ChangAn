@@ -20,39 +20,14 @@ Page({
   onLoad: function (options) {
       // console.log(app.globalData.userInfo)
       this.setData({
-        userInfo: app.globalData.userInfo,
+      
+          userInfo: app.globalData.userInfo,
+        
         num:'数据获取中...'
       })
-     // 判断用户是否授权
-      if (app.scope_userInfo){
-          // 授权
-        utils.searchUserInfo(app._openid)
-          .then(res=>{
-            // console.log('查询成功',res)
-            this.setData({
-              sign: res.data[res.data.length-1].sign
-            })
-          })
-          utils.getIndex(app._openid).then(res=>{
-            for (let [index,val] of res.data.entries()){
-              // console.log(val,index)
-              if (val._openid === app._openid){
-                  this.setData({
-                    num: index+1
-                  })
-              }
-            }
-            if(this.data.num < 100){
-                this.setData({
-                  num : '00'+ this.data.num
-                })
-            }
-          }).catch(err=>{
-            this.setData({
-              num:''
-            })
-          })
-      }
+    
+    this.getData()
+      
       
     
   },
@@ -68,7 +43,15 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    // console.log(app.globalData.userInfo)
+  //  console.log(app.globalData.userInfo)
+   this.setData({
+     userInfo:app.globalData.userInfo
+   })
+    if (app.scope_userInfo){
+this.getData()
+   }
+    
+    // this.getData()
   },
 
   /**
@@ -134,6 +117,47 @@ Page({
     }else{
       this.setData({ show: true })
     }
+  },
+  getData(){
+
+    // 判断用户是否授权
+    if (app.scope_userInfo){
+
+   
+      console.log(app._openid)
+      // 授权
+      utils.searchUserInfo(app._openid)
+        .then(res => {
+           console.log('查询成功',res)
+          this.setData({
+            sign: res.data[res.data.length - 1].sign
+          })
+        })
+      utils.getIndex(app._openid).then(res => {
+        for (let [index, val] of res.data.entries()) {
+          // console.log(val,index)
+          if (val._openid === app._openid) {
+            this.setData({
+              num: index + 1
+            })
+          }
+        }
+        if (this.data.num < 100) {
+          this.setData({
+            num: '00' + this.data.num
+          })
+        }
+      }).catch(err => {
+        this.setData({
+          num: ''
+        })
+      })
+
     
+  }else{
+    this.setData({
+      num: ''
+    })
+  }
   }
 })

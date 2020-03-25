@@ -18,6 +18,7 @@ Page({
     })
   },
   onLoad: function () {
+    console.log(app._openid)
     if (app.globalData.userInfo) {
       if (app.globalData.userInfo.nickName){
         this.setData({
@@ -35,6 +36,13 @@ Page({
       }
       
     }
+    wx.getSetting({
+      success: res => {
+        if (res.authSetting['scope.userInfo']) {
+          app.scope_userInfo = true
+        }
+      }
+    })
   },
   getUserInfo: function(e) {
     console.log(e)
@@ -59,6 +67,8 @@ Page({
       userInfo: e.detail.userInfo,
       city: userInfo.city
     })
+    app.globalData.userInfo = userInfo
+    app.scope_userInfo = true
     // 查找用户
     utils.searchUserInfo(app._openid)
       .then(res=>{

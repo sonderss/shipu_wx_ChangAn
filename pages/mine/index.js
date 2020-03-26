@@ -47,9 +47,9 @@ Page({
    this.setData({
      userInfo:app.globalData.userInfo
    })
-    if (app.scope_userInfo){
-this.getData()
-   }
+    if (app.globalData.userInfo.avatarUrl){
+        this.getData()
+    }
     
     // this.getData()
   },

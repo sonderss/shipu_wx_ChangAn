@@ -2,7 +2,8 @@
 App({
   onLaunch: function () {
     wx.cloud.init({
-      traceUser:true
+      traceUser:true,
+      env:'add-g8pc9'
     })
     // 展示本地存储能力
     var logs = wx.getStorageSync('logs') || []
@@ -14,14 +15,28 @@ App({
       success: res => {
         // 发送 res.code 到后台换取 openId, sessionKey, unionId
         // console.log(res) https://api.weixin.qq.com/sns/jscode2session
-        wx.request({
-            url:'https://api.weixin.qq.com/sns/jscode2session',
-            data:{appid:'wx3c106149b6bcef83',secret:"ca6b5b1a911b1b8c2573648060c76ac8",js_code:res.code,grant_type:"authorization_code"},
-            success:res=>{
-              this._openid = res.data.openid
-              // console.log(this._openid)
+        // wx.request({
+        //     url:'https://api.weixin.qq.com/sns/jscode2session',
+        //     data:{appid:'wx3c106149b6bcef83',secret:"ca6b5b1a911b1b8c2573648060c76ac8",js_code:res.code,grant_type:"authorization_code"},
+        //     success:res=>{
+        //       this._openid = res.data.openid
+        //       console.log(this._openid)
+        //     }
+        // })
+            let data  = {
+              code:res.code
             }
-        })
+            wx.cloud.callFunction({
+              name: "getopenid",
+              data: data
+            }).then(res => {
+              //  console.log(res)
+              if (res.result.openid.length > 10){
+                this._openid = res.result.openid
+              }
+            }).catch(err=>{
+              console.log(err)
+            })
       }
     })
     // 获取用户信息

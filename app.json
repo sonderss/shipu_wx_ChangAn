@@ -8,9 +8,8 @@
     "pages/history/index",
     "miniprogram_npm/vant-weapp/history-detail/index",
     "pages/history-detail/index",
-    "pages/mine/index"
-
-   
+    "pages/mine/index",
+    "pages/feedback/index"
   ],
   "window": {
     "backgroundTextStyle": "light",

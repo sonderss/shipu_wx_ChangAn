@@ -44,6 +44,7 @@ const getTime = () => {
 
 
 const db = wx.cloud.database()
+const _ = db.command
 // 查询用户
 const  searchUserInfo = (openid) => {
 return new Promise ((resolve,reject)=>{
@@ -137,6 +138,70 @@ const getIndex = async  (id) =>{
     }
   })
 }
+// 查询用户反馈记录
+const seletfeedback = openid =>{
+  return new Promise((resolve,reject)=>{
+    db.collection('feedback').where({
+      _openid: openid
+    }).get().then(res => {
+      resolve(res)
+    })
+    .catch(err=>{
+      reject(err)
+    })
+  }) 
+}
+// 添加反馈数据
+const addfeedback = data => {
+  return new Promise((resolve,reject)=>{
+    db.collection('feedback').add({
+      data: {
+        name: data.name,
+        creattime: data.creattime,
+        feedbacks: [
+          data.feedback
+        ]
+      }
+    }).then(res => {
+      // console.log(res)
+      resolve(res)
+    })
+    .catch(err=>{
+      reject(err)
+    })
+  }) 
+}
+// 更新记录
+const upfeeddata = (openid, feedback) =>{
+    return new Promise((resolve,reject)=>{
+      db.collection('feedback').where({
+        _openid: openid
+      }).update({
+          data:{
+            feedbacks: _.push(feedback)
+          }
+      }).then(res=>{
+        resolve(res)
+      }).catch(err=>{
+        reject(err)
+      })
+    })
+}
+// 意见反馈
+// const submitfeedback = (openid,data)=>{
+//   console.log(openid, data)
+//         db.collection('feedback').where({
+//           _openid: openid
+//         }).get().then(res=>{
+//           console.log(res)
+//             if(res.length === 0){
+//               addfeedback(data)
+//             }else{
+              
+//             }
+//         })
+// }
+
 module.exports = {
   // formatTime: formatTime
   request:request,
@@ -145,5 +210,9 @@ module.exports = {
   searchUserInfo,
   updata,
   setSign,
-  getIndex
+  getIndex,
+  // submitfeedback,
+  addfeedback,
+  seletfeedback,
+  upfeeddata
 }

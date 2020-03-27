@@ -53,3 +53,21 @@
      <input   cursor-spacing='20'  class="w_input" maxlength="20" bindinput="getValue"  placeholder="快来设置你的个性签名吧..." />
   </view>
 </van-dialog> 
+
+<view class="card_view">
+ <view class="view_content">
+  <button open-type="contact"  style="width:100%;height:100%;opacity: 0"></button>
+ </view>
+  <view class="view_mid_card">
+        <van-cell
+          is-link
+          title="{{item.title}}"
+          link-type="navigateTo"
+          custom-class="setClass"
+          url="{{item.url}}"
+          wx:for="{{list}}"
+          wx:key="{{index}}"
+        />
+  </view>
+</view>
+

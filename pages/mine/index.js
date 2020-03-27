@@ -10,6 +10,7 @@ Page({
       userInfo:{},
       sign:'',
       show:false,
+    list: [{ title: '意见反馈', url: '../feedback/index' },{ title: '联系客服', url: '' }],
       num:Number,
       sign_set_txt:'' //设置的签名信息
   },
@@ -19,6 +20,9 @@ Page({
    */
   onLoad: function (options) {
       // console.log(app.globalData.userInfo)
+      wx.setNavigationBarTitle({
+        title: '我的'
+      })
       this.setData({
       
           userInfo: app.globalData.userInfo,
@@ -94,7 +98,14 @@ Page({
       })
   },
   modalinput(){
-    console.log(this.data.show)
+    console.log(app.scope_userInfo)
+    if (!app.scope_userInfo) {
+      wx.showToast({
+        title: '暂未登陆，请回到首页登陆',
+        icon:"none"
+      })
+      return
+    }
     this.setData({
       show:!this.data.show
     })
@@ -106,7 +117,6 @@ Page({
   },
   // 修改签名
   set_sign(){
-    console.log(this.data.sign_set_txt)
     if (this.data.sign_set_txt){
         utils.setSign(app._openid, this.data.sign_set_txt)
          .then(res=>{
@@ -114,8 +124,6 @@ Page({
               sign: this.data.sign_set_txt
             })
          })
-    }else{
-      this.setData({ show: true })
     }
   },
   getData(){
@@ -159,5 +167,12 @@ Page({
       num: ''
     })
   }
-  }
+   },
+  // goDeatil(e){
+  //   console.log(e.currentTarget.dataset.index)
+  //   if (e.currentTarget.dataset.index === 0){
+  //       // 联系客服
+        
+  //   }
+  // }
 })

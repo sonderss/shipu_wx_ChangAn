@@ -1,0 +1,18 @@
+<!--pages/feedback/index.wxml-->
+<view class="title_view">
+    <input placeholder="请输入标题"  maxlength="15" bindinput="getTitle"></input>
+    <view class="submit"  bindtap="getConetent">提交</view>
+</view>
+<editor
+    id="editor"
+    class="ql-container"
+    placeholder="请输入内容..."
+    showImgSize
+    showImgToolbar
+    showImgResize
+    bindstatuschange="onStatusChange"
+    read-only="{{readOnly}}"
+    bindready="onEditorReady">
+>
+</editor>
+

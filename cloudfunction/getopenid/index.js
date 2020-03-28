@@ -14,7 +14,6 @@ exports.main = async (event, context) => {
     json: true
   }
   return await rq(options)
-  console.log(options)
    .then(res=>{
      return res
    })

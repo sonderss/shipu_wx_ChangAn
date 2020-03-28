@@ -1,18 +1,4 @@
-// const formatTime = date => {
-//   const year = date.getFullYear()
-//   const month = date.getMonth() + 1
-//   const day = date.getDate()
-//   const hour = date.getHours()
-//   const minute = date.getMinutes()
-//   const second = date.getSeconds()
 
-//   return [year, month, day].map(formatNumber).join('/') + ' ' + [hour, minute, second].map(formatNumber).join(':')
-// }
-
-// const formatNumber = n => {
-//   n = n.toString()
-//   return n[1] ? n : '0' + n
-// }
 const app = getApp();
 const request = (option)=>{
   return new Promise((resolve,reject)=>{
@@ -187,20 +173,6 @@ const upfeeddata = (openid, feedback) =>{
       })
     })
 }
-// 意见反馈
-// const submitfeedback = (openid,data)=>{
-//   console.log(openid, data)
-//         db.collection('feedback').where({
-//           _openid: openid
-//         }).get().then(res=>{
-//           console.log(res)
-//             if(res.length === 0){
-//               addfeedback(data)
-//             }else{
-              
-//             }
-//         })
-// }
 
 module.exports = {
   // formatTime: formatTime

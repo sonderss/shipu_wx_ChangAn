@@ -1,10 +1,12 @@
 //app.js
+const util  = require("utils/checkviseion");
 App({
   onLaunch: function () {
     wx.cloud.init({
       traceUser:true,
       env:'add-g8pc9'
     })
+    util.checkVieson()
     // 展示本地存储能力
     var logs = wx.getStorageSync('logs') || []
     logs.unshift(Date.now())
@@ -12,31 +14,25 @@ App({
 
     // 登录
     wx.login({
-      success: res => {
-        // 发送 res.code 到后台换取 openId, sessionKey, unionId
-        // console.log(res) https://api.weixin.qq.com/sns/jscode2session
-        // wx.request({
-        //     url:'https://api.weixin.qq.com/sns/jscode2session',
-        //     data:{appid:'wx3c106149b6bcef83',secret:"ca6b5b1a911b1b8c2573648060c76ac8",js_code:res.code,grant_type:"authorization_code"},
-        //     success:res=>{
-        //       this._openid = res.data.openid
-        //       console.log(this._openid)
-        //     }
-        // })
+      success:  res => {
             let data  = {
               code:res.code
             }
-            wx.cloud.callFunction({
+         wx.cloud.callFunction({
               name: "getopenid",
               data: data
-            }).then(res => {
-              //  console.log(res)
-              if (res.result.openid.length > 10){
-                this._openid = res.result.openid
-              }
+            }).then( res => {
+              console.log(res)
+              this._openid = res.result.openid
+              this.openidcall(this._openid)
+              console.log(this._openid)
             }).catch(err=>{
               console.log(err)
+              console.log(this._openid)
             })
+      },
+      fail:err=>{
+        console.log('登录失败')
       }
     })
     // 获取用户信息
@@ -51,8 +47,6 @@ App({
               if (this.testCallBack){
                 this.testCallBack(res.userInfo)
               }
-              console.log('已经授权，可以直接调用 getUserInfo 获取头像昵称，不会弹框')
-              console.log(this.globalData.userInfo)
               // 更新用户信息
               const db = wx.cloud.database()
               db.collection('userInfo').where({
@@ -71,11 +65,7 @@ App({
                 console.log('更新用户成功', res)
               })
               //  utils.updata(this._openid, this.globalData.userInfo)
-              // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
-              // 所以此处加入 callback 以防止这种情况
-              if (this.userInfoReadyCallback) {
-                this.userInfoReadyCallback(res);
-              }
+              
             }
           })
         }
@@ -96,8 +86,8 @@ App({
   testCallBack(data){
       return data
   },
-  scopeInfo(data){
-    return data
+  openidcall(id){
+    return id
   },
   get:function(url,data){
     console.log(url,data)

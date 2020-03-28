@@ -84,6 +84,12 @@ Page({
                   icon: 'success',
                   duration: 2000
                 })
+                setTimeout(()=>{
+                  wx.switchTab({
+                    url: '../mine/index',
+                  })
+                },2000)
+                
               }
             }).catch(err=>{
               wx.hideLoading()
@@ -103,6 +109,11 @@ Page({
                  icon: 'success',
                  duration: 2000
                })
+               setTimeout(() => {
+                 wx.switchTab({
+                   url: '../mine/index',
+                 })
+               }, 2000)
              })
               .catch(err => {
                 wx.hideLoading()

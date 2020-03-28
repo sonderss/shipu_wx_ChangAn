@@ -60,27 +60,33 @@ Page({
   },
   //获取信息
   onGotUserInfo(e) {
-    var userInfo = e.detail.userInfo
+    let userInfo = e.detail.userInfo
     app.globalData.userInfo = userInfo
     // console.log('用户信息',app.globalData.userInfo)
     this.setData({
       userInfo: e.detail.userInfo,
-      city: userInfo.city
+      city: e.detail.userInfo
     })
     app.globalData.userInfo = userInfo
     app.scope_userInfo = true
-    // 查找用户
-    utils.searchUserInfo(app._openid)
-      .then(res=>{
-        // console.log(res)
-        if(res.data.length === 0){
-          // 添加用户信息
-          utils.addUserInfo(app.globalData.userInfo)
-        }else{
-          // 更新用户信息
-          utils.updata(app._openid, userInfo)
-        }
-    })
+    app.openidcall = res=>{
+      // console.log(res)
+      if (res) {
+        // 查找用户
+        utils.searchUserInfo(app._openid)
+          .then(res => {
+            // console.log(res)
+            if (res.data.length === 0) {
+              // 添加用户信息
+              utils.addUserInfo(app.globalData.userInfo)
+            } else {
+              // 更新用户信息
+              utils.updata(app._openid, userInfo)
+            }
+          })
+      }
+    }
+    
   },
   //组件回调事件
   test(e){

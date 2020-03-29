@@ -1,0 +1,40 @@
+<!--pages/about/index.wxml-->
+ <van-collapse  value="{{ activeNames }}" bind:change="onChange">
+    <van-collapse-item clickable='true' name="1" title="" icon="">
+          <view slot="title" style="display: flex; align-items: center">长安酒馆是什么<van-icon style="margin-left:5rpx;" color="#1989fa" name="question-o" /></view>
+          <text>当然是用来打发无聊时间的东西咯</text>
+    </van-collapse-item>
+    <van-collapse-item clickable='true' name="2">
+          <view slot="title" style="display: flex; align-items: center">长安酒馆能做什么<van-icon style="margin-left:5rpx;" color="#1989fa" name="question-o" /></view>
+          <text>什么也不做，你开心就好</text>
+    </van-collapse-item>
+     <van-collapse-item clickable='true' name="3">
+          <view slot="title" style="display: flex; align-items: center">长安酒馆有哪些功能<van-icon style="margin-left:5rpx;" color="#1989fa" name="question-o" /></view>
+          <text>功能会不断的增加，敬请期待吧</text>
+    </van-collapse-item>
+    <van-collapse-item clickable='true' name="4">
+          <view slot="title" style="display: flex; align-items: center">
+          长安酒馆都有谁在维护<van-icon style="margin-left:5rpx;" color="#1989fa" name="question-o" /></view>
+          <text>目前只有一位开发者，风格全凭个人爱好</text>
+    </van-collapse-item>
+    <van-collapse-item clickable='true' name="5">
+          <view slot="title" style="display: flex; align-items: center">
+          长安酒馆是靠什么赚钱的<van-icon style="margin-left:5rpx;" color="#1989fa" name="question-o" /></view>
+          <text>想多了，自费维护状态</text>
+    </van-collapse-item>
+    <van-collapse-item clickable='true' name="6">
+          <view slot="title" style="display: flex; align-items: center">
+          长安酒馆是如何更新版本的<van-icon style="margin-left:5rpx;" color="#1989fa" name="question-o" /></view>
+          <text>业余时间不定时更新版本及修复BUG</text>
+    </van-collapse-item>
+    <van-collapse-item clickable='true' name="7">
+          <view slot="title" style="display: flex; align-items: center">
+          长安酒馆需要别人参与开发吗<van-icon style="margin-left:5rpx;" color="#1989fa" name="question-o" /></view>
+          <text>需要。无论是界面设计还是功能开发，都敞开大门热烈欢迎</text>
+    </van-collapse-item>
+    <van-collapse-item clickable='true' name="8">
+          <view slot="title" style="display: flex; align-items: center">
+          怎么样联系到长安酒馆的开发者<van-icon style="margin-left:5rpx;" color="#1989fa" name="question-o" /></view>
+          <text>邮箱：778277514@QQ.COM</text>
+    </van-collapse-item>
+ </van-collapse>

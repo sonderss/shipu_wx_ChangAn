@@ -1,0 +1,132 @@
+
+<!-- saved from url=(0114)file:///E:/makedwon/preview/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E8%87%AA%E5%8A%A8%E6%9B%B4%E6%96%B0.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	  
+    <title>i5ting_ztree_toc:微信小程序自动更新</title>
+		<link href="file:///E:/makedwon/preview/toc/style/github-bf51422f4bb36427d391e4b75a1daa083c2d840e.css" media="all" rel="stylesheet" type="text/css">
+		<link href="file:///E:/makedwon/preview/toc/style/github2-d731afd4f624c99a4b19ad69f3083cd6d02b81d5.css" media="all" rel="stylesheet" type="text/css">
+		<link href="file:///E:/makedwon/preview/toc/css/zTreeStyle/zTreeStyle.css" media="all" rel="stylesheet" type="text/css">
+	  <style>
+		pre {
+		    counter-reset: line-numbering;
+		    border: solid 1px #d9d9d9;
+		    border-radius: 0;
+		    background: #fff;
+		    padding: 0;
+		    line-height: 23px;
+		    margin-bottom: 30px;
+		    white-space: pre;
+		    overflow-x: auto;
+		    word-break: inherit;
+		    word-wrap: inherit;
+		}
+
+		pre a::before {
+		  content: counter(line-numbering);
+		  counter-increment: line-numbering;
+		  padding-right: 1em; /* space after numbers */
+		  width: 25px;
+		  text-align: right;
+		  opacity: 0.7;
+		  display: inline-block;
+		  color: #aaa;
+		  background: #eee;
+		  margin-right: 16px;
+		  padding: 2px 10px;
+		  font-size: 13px;
+		  -webkit-touch-callout: none;
+		  -webkit-user-select: none;
+		  -khtml-user-select: none;
+		  -moz-user-select: none;
+		  -ms-user-select: none;
+		  user-select: none;
+		}
+
+		pre a:first-of-type::before {
+		  padding-top: 10px;
+		}
+
+		pre a:last-of-type::before {
+		  padding-bottom: 10px;
+		}
+
+		pre a:only-of-type::before {
+		  padding: 10px;
+		}
+
+		.highlight { background-color: #ffffcc } /* RIGHT */
+		</style>
+  </head>
+  <body>
+	  <div>
+				<div style="width:25%;">
+						<ul id="tree" class="ztree" style="width: 326px; overflow: auto; position: fixed; z-index: 2147483647; border: 0px none; left: 0px; top: 0px; height: 657px;"><li id="tree_1" class="level0" tabindex="0" hidefocus="true" treenode=""><span id="tree_1_switch" title="" class="button level0 switch roots_docu" treenode_switch=""></span><a id="tree_1_a" class="level0 curSelectedNode" treenode_a="" onclick="" target="_blank" style="" title="Table of Content"><span id="tree_1_ico" title="" treenode_ico="" class="button ico_docu" style="width:0px;height:0px;"></span><span id="tree_1_span">Table of Content</span></a></li><li id="tree_2" class="level0" tabindex="0" hidefocus="true" treenode=""><span id="tree_2_switch" title="" class="button level0 switch center_docu" treenode_switch=""></span><a id="tree_2_a" class="level0" treenode_a="" onclick="" href="file:///E:/makedwon/preview/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E8%87%AA%E5%8A%A8%E6%9B%B4%E6%96%B0.html#1" target="_self" style="" title="1. 小程序启动机制"><span id="tree_2_ico" title="" treenode_ico="" class="button ico_docu" style="width:0px;height:0px;"></span><span id="tree_2_span">1. 小程序启动机制</span></a></li><li id="tree_3" class="level0" tabindex="0" hidefocus="true" treenode=""><span id="tree_3_switch" title="" class="button level0 switch bottom_open" treenode_switch=""></span><a id="tree_3_a" class="level0" treenode_a="" onclick="" href="file:///E:/makedwon/preview/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E8%87%AA%E5%8A%A8%E6%9B%B4%E6%96%B0.html#10101" target="_self" style="" title="1.1.1. 官方文档说明"><span id="tree_3_ico" title="" treenode_ico="" class="button ico_open" style="width:0px;height:0px;"></span><span id="tree_3_span">1.1.1. 官方文档说明</span></a><ul id="tree_3_ul" class="level0 " style="display:block"><li id="tree_4" class="level1" tabindex="0" hidefocus="true" treenode=""><span id="tree_4_switch" title="" class="button level1 switch center_docu" treenode_switch=""></span><a id="tree_4_a" class="level1" treenode_a="" onclick="" href="file:///E:/makedwon/preview/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E8%87%AA%E5%8A%A8%E6%9B%B4%E6%96%B0.html#1010101" target="_self" style="" title="1.1.1.1. 在app.js里做版本检测，如果有新版本，则自动更新。代码如下"><span id="tree_4_ico" title="" treenode_ico="" class="button ico_docu" style="width:0px;height:0px;"></span><span id="tree_4_span">1.1.1.1. 在app.js里做版本检测，如果有新版本，则自动更新。代码如下</span></a></li><li id="tree_5" class="level1" tabindex="0" hidefocus="true" treenode=""><span id="tree_5_switch" title="" class="button level1 switch bottom_docu" treenode_switch=""></span><a id="tree_5_a" class="level1" treenode_a="" onclick="" href="file:///E:/makedwon/preview/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E8%87%AA%E5%8A%A8%E6%9B%B4%E6%96%B0.html#1010102" target="_self" style="" title="1.1.1.2. app.js中引用"><span id="tree_5_ico" title="" treenode_ico="" class="button ico_docu" style="width:0px;height:0px;"></span><span id="tree_5_span">1.1.1.2. app.js中引用</span></a></li></ul></li></ul>
+				</div>
+        <div id="readme" style="width: 70%; margin-left: 25%;">
+          	<article class="markdown-body">
+            	<h2 id="1">1. 小程序启动机制</h2>
+<h4 id="10101">1.1.1. 官方文档说明</h4>
+<pre><code> //文档:   指南 -》 小程序运行时 -》 运行机制
+
+冷启动：如果用户首次打开，或小程序销毁后被用户再次打开，此时小程序重新加载启动.
+热启动：如果用户已经打开过某小程序，然后在一定时间内再次打开该小程序，此时小程序并未被销毁，热启动。
+</code></pre><h4 id="1010101">1.1.1.1. 在app.js里做版本检测，如果有新版本，则自动更新。代码如下</h4>
+<pre><code>// utils/utli.js
+
+// 检测新版本，自动更新
+const checkViesion = () =&gt; {
+  // 判断微信版本是否兼容该检测版本Api
+  if (wx.canIUse("getUpdateManager")) {
+    const updateManager = wx.getUpdateManager()
+    updateManager.onCheckForUpdate(function (res) {
+      // 检测是否有新版本
+      if (res.hasUpdate) {
+        //下载新版本
+        updateManager.onUpdateReady(function () {
+          // 新版本下载成功，重启(自动)更新
+          updateManager.applyUpdate()
+        })
+        // 下载新版本失败
+        updateManager.onUpdateFailed(function () {
+          wx.showModal({
+            title: '提示',
+            content: '新版本下载失败，请稍后再试',
+          })
+        })
+      }
+    })
+  } else {
+    wx.showModal({
+      title: '提示',
+      content: '微信版本过低，请更新最新微信版本',
+    })
+  }
+}
+</code></pre><h4 id="1010102">1.1.1.2. app.js中引用</h4>
+<pre><code>onLaunch: function () {
+    // 调用检测函数
+    util.checkViesion()
+}
+</code></pre><p> Ok，到此就完成了版本检测及自动更新。</p>
+
+          	</article>
+        </div>
+		</div>
+  
+
+<script type="text/javascript" src="file:///E:/makedwon/preview/toc/js/jquery-1.4.4.min.js"></script>
+<script type="text/javascript" src="file:///E:/makedwon/preview/toc/js/jquery.ztree.all-3.5.min.js"></script>
+<script type="text/javascript" src="file:///E:/makedwon/preview/toc/js/ztree_toc.js"></script>
+<script type="text/javascript" src="file:///E:/makedwon/preview/toc_conf.js"></script>
+
+<script type="text/javascript">
+<!--
+$(document).ready(function(){
+    var css_conf = eval(markdown_panel_style);
+    $('#readme').css(css_conf)
+    
+    var conf = eval(jquery_ztree_toc_opts);
+		$('#tree').ztree_toc(conf);
+});
+//-->
+</script></body></html>

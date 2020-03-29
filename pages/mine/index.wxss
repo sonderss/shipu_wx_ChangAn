@@ -154,7 +154,7 @@ overflow:hidden;text-overflow:ellipsis;
   height: 80rpx;
   position: absolute;
   left: 21rpx;
-  bottom: 0;
+  bottom: 88rpx;
   z-index: 999;
 }
 .view_content .btn{

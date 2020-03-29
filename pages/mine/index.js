@@ -10,7 +10,7 @@ Page({
       userInfo:{},
       sign:'',
       show:false,
-    list: [{ title: '意见反馈', url: '../feedback/index' },{ title: '联系客服', url: '' }],
+    list: [{ title: '意见反馈', url: '../feedback/index' }, { title: '联系客服', url: '' }, { title: '关于酒馆', url: '../about/index' }],
       num:Number,
       sign_set_txt:'' //设置的签名信息
   },

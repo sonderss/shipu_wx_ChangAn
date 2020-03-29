@@ -56,10 +56,11 @@
 
 <view class="card_view">
  <view class="view_content">
-  <button open-type="contact"  style="width:100%;height:100%;opacity: 0"></button>
+  <button open-type="contact"  style="width:100%;height:100%;opacity: 0;border:none"></button>
  </view>
   <view class="view_mid_card">
         <van-cell
+          border="{{none}}"
           is-link
           title="{{item.title}}"
           link-type="navigateTo"

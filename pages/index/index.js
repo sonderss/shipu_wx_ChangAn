@@ -8,7 +8,20 @@ Page({
     userInfo: { nickName:''},
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
-    list: [{ names: '历史上的今天', icon: 'icon-lishijilu', size: '40' }]
+    list: [{ names: '历史上的今天', icon: 'icon-lishijilu', size: '40' },
+      { names: '幸运数字', icon: 'icon-shuzi8', size: '40' }
+    ],
+    color:'',
+    showPop:false,
+    num:0,
+    maxNum:5,
+    closeoverlay:false,
+    timer:null,
+    closeable:true,
+    flag:true,
+    showSetNum:false,
+    placeholdertxt:'设置参加人数，无上限',
+    textvalue:''
     // , { names: '周公解梦', icon: 'icon-lishijilu', size: '40' }, { names: '影视检索', icon: 'icon-lishijilu', size: '40' }
   },
   //事件处理函数
@@ -97,7 +110,62 @@ Page({
       wx.navigateTo({
         url:  `../history/index?date=${time}`
       })
+    } else if (num === "1"){
+      // 幸运数字  首先设置人数
+      this.setData({ showSetNum:true})
     }
+    
+    
+  },
+  // 设置人数
+  set_num(){
+    if (!Number(this.data.maxNum)){
+        this.setData({
+          placeholdertxt:'请输入数字',
+          showSetNum:true,
+          textvalue:''
+        })
+        return
+    }
+    this.setData({ showPop: true })
+  },
+  // 设置最大值
+  getValue(e){
+    this.setData({
+      maxNum:e.detail.value
+    })
+  },
+  // 关闭弹出层
+  onClose(){
+    this.setData({ showPop: false, timer: clearInterval(this.data.timer), textvalue: '', num:0})
+  },
+  // 停止随机
+  end(){
+    this.setData({
+      timer:clearInterval(this.data.timer),
+      flag:true
+    })
+  },
+  // 点击开始按钮，随机数字
+  startRadomNum(){
+    let minNum = 1 
+    // 随机数字  + 随机颜色
+    this.setData({
+        timer: setInterval(() => {
+                  let co = this.colorMe()
+                  let radomnum = Math.floor(Math.random() * (this.data.maxNum*1 - minNum + 1) + minNum)
+                  this.setData({ num: radomnum, color: co })
+               }, 200),
+        flag:false
+    }) 
+  },
+  // 随机颜色
+   colorMe() {
+     let r = Math.floor(Math.random() * 255);
+     let g = Math.floor(Math.random() * 255);
+     let b = Math.floor(Math.random() * 255);
+     let color = 'rgba(' + r + ',' +g + ',' + b + ',0.8)';
+     return color
   },
    /**
    * 用户点击右上角分享

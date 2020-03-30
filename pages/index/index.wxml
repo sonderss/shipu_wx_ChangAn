@@ -1,5 +1,4 @@
 <!--index.wxml-->
-
     <view class="top_title">
       <view class="img_view_top">
           <image style="width:100%;height:100%" src='../../static/changan.jpg' />
@@ -20,24 +19,42 @@
       mode="closeable"
       text="小程序改版啦！新增长安酒馆Logo以及全新风格大换血，更多精彩内容，请关注公众号天空之外！！！"
     />
-  <!-- <view class="userinfo"> -->
-    <!-- <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button> -->
-    <!-- <block wx:else>
-      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
-      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
-    </block> -->
-  <!-- </view> -->
-  <!-- <view class="btn">
-    <button bindtap='getMain' class="weui-btn" type="primary">进入主界面</button>
-  </view> -->
-  <!-- <view class="usermotto">
-    <text class="user-motto">{{motto}}</text>
-  </view> -->
-  
   <!-- 列表 -->
   <view class="list-view">
     <gird bindcustomevent='test' icon='{{item.icon}}'  wx:for='{{list}}' wx:key="{{index}}" size='{{item.size}}' num='{{index}}' name='{{item.names}}'></gird>
   </view>
-  
+  <van-popup style=" overflow: hidden" close-on-click-overlay="{{closeoverlay}}" overlay-style="background-color: rgba(0, 0, 0, 1);" custom-style="background-color: rgba(0, 0, 0, 0.2);" closeable
+   show="{{ showPop }}" z-index="9999" bind:close="onClose"
+   close-icon="close"
+   >
+   
+    <view style="costom-viwe">
+      <view class="num-view">
+        <text style="color:{{color}}">{{num}}</text>
+        <text bindtap="onClose"  class="iconfont icon-guanbi icon_a" ></text>
+      </view>
+      <view class="btn-start" wx:if="{{flag}}" bindtap="startRadomNum">
+        <view class="btn-text">开始</view>
+      </view>
+      <view class="btn-start"  wx:if="{{!flag}}" bindtap="end">
+        <view class="btn-text">结束</view>
+      </view>
+      <view class="btn-start-empty"></view>
+    </view>
+    
+  </van-popup>
 
+<van-dialog
+  use-slot
+  title="设置参与人数"
+  zIndex="9999"
+  show="{{ showSetNum }}"
+  show-cancel-button
+  bind:close="close_num"
+  bind:confirm="set_num"
+  confirm-button-text="确 定"
+  cancel-button-text="取 消"
+>
+<input   cursor-spacing='20'  type="number" value="{{textvalue}}" class="o-input"  bindinput="getValue" placeholder="{{placeholdertxt}}" />
 
+</van-dialog> 

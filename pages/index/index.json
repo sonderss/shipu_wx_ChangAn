@@ -1,6 +1,8 @@
 {
   "usingComponents": {
     "van-notice-bar":"/miniprogram_npm/vant-weapp/notice-bar/index",
-    "gird":"/miniprogram_npm/vant-weapp/gird/index"
+    "gird":"/miniprogram_npm/vant-weapp/gird/index",
+    "van-popup": "/miniprogram_npm/vant-weapp/popup/index",
+      "van-dialog": "/miniprogram_npm/vant-weapp/dialog/index"
   }
 }

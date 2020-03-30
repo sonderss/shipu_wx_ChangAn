@@ -1,4 +1,5 @@
 /**index.wxss**/
+@import '../../static/wxss/iconfont.wxss';
 .userinfo {
   display: flex;
   flex-direction: column;
@@ -54,8 +55,68 @@
 /* //列表 */
 .list-view{
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   flex-wrap: wrap;
   margin-top: 20rpx;
-  padding: 0 30rpx
+  padding: 0 30rpx;
+}
+.costom-viwe{
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  overflow: hidden
+}
+.num-view{
+  flex: 1;
+  height:80vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 130rpx;
+  color: #fff;
+   overflow: hidden;
+   position: relative
+}
+.icon_a{
+  width:40rpx;
+  height:40rpx;
+  display: block;
+  color: #fff;
+  font-size: 40rpx;
+  position: absolute;
+  right: 25rpx;
+  top:50rpx;
+  z-index: 9999
+}
+.btn-start{
+  width: 100vw;
+  height: 10vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.btn-text{
+  width: 90%;
+  height: 100%;
+  background: skyblue;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  z-index: 9999
+}
+.btn-start-empty{
+  width:100vw;
+  height: 10vh
+}
+.o-input{
+   display:block;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  line-height: 100rpx;
+  font-size: 30rpx;
+  min-height: 1rem;
 }

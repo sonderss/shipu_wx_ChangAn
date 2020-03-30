@@ -10,7 +10,8 @@
     "pages/history-detail/index",
     "pages/mine/index",
     "pages/feedback/index",
-    "pages/about/index"
+    "pages/about/index",
+    "miniprogram_npm/vant-weapp/modal-c/index"
   ],
   "window": {
     "backgroundTextStyle": "light",

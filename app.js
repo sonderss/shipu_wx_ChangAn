@@ -1,5 +1,6 @@
 //app.js
 const util  = require("utils/checkviseion");
+const utils = require('utils/checkUser');
 App({
   onLaunch: function () {
     wx.cloud.init({
@@ -26,6 +27,9 @@ App({
               this._openid = res.result.openid
               this.openidcall(this._openid)
               console.log(this._openid)
+              // 查找用户
+              utils.searchUserInfo(this._openid, this.globalData.userInfo)
+              // console.log(this.globalData.userInfo)
             }).catch(err=>{
               console.log(err)
               console.log(this._openid)
@@ -48,23 +52,10 @@ App({
                 this.testCallBack(res.userInfo)
               }
               // 更新用户信息
-              const db = wx.cloud.database()
-              db.collection('userInfo').where({
-                _openid: this._openid
-              }).update({
-                data: {
-                  avatarUrl: res.userInfo.avatarUrl,
-                  city: res.userInfo.city,
-                  country: res.userInfo.country,
-                  gender: res.userInfo.gender,
-                  language: res.userInfo.language,
-                  nickName: res.userInfo.nickName,
-                  province: res.userInfo.province,
-                },
-              }).then(res => {
-                console.log('更新用户成功', res)
-              })
-              //  utils.updata(this._openid, this.globalData.userInfo)
+               console.log(this.globalData.userInfo)
+              //  // 查找用户
+              //  utils.searchUserInfo(this.openidcall(this._openid), this.globalData.userInfo)
+             
               
             }
           })

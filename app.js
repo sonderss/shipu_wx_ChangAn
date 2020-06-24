@@ -25,7 +25,6 @@ App({
             }).then( res => {
               console.log(res)
               this._openid = res.result.openid
-              this.openidcall(this._openid)
               console.log(this._openid)
               // 查找用户
               utils.searchUserInfo(this._openid, this.globalData.userInfo)
@@ -33,6 +32,8 @@ App({
             }).catch(err=>{
               console.log(err)
               console.log(this._openid)
+              this.scope_userInfo =false
+              this.globalData.userInfo = {}
             })
       },
       fail:err=>{
@@ -48,21 +49,15 @@ App({
              success:  res => {
               // 可以将 res 发送给后台解码出 unionId
               this.globalData.userInfo = res.userInfo
-              if (this.testCallBack){
                 this.testCallBack(res.userInfo)
-              }
-              // 更新用户信息
-               console.log(this.globalData.userInfo)
-              //  // 查找用户
-              //  utils.searchUserInfo(this.openidcall(this._openid), this.globalData.userInfo)
-             
-              
+                this.scope_userInfo = true
             }
           })
         }
       },
       fail:err=>{
         this.globalData.userInfo = {}
+        this.scope_userInfo = false
       }
     })
     // console.log('app', this.globalData.userInfo)
@@ -76,9 +71,6 @@ App({
   },
   testCallBack(data){
       return data
-  },
-  openidcall(id){
-    return id
   },
   get:function(url,data){
     console.log(url,data)

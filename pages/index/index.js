@@ -20,7 +20,7 @@ Page({
     closeable:true,
     flag:true,
     showSetNum:false,
-    placeholdertxt:'设置参加人数，无上限',
+    placeholdertxt:'设置参加人数',
     textvalue:''
     // , { names: '周公解梦', icon: 'icon-lishijilu', size: '40' }, { names: '影视检索', icon: 'icon-lishijilu', size: '40' }
   },
@@ -32,23 +32,29 @@ Page({
   },
   onLoad: function () {
     console.log(app._openid)
-    if (app.globalData.userInfo) {
-      if (app.globalData.userInfo.nickName){
-        this.setData({
-          userInfo: app.globalData.userInfo,
-          hasUserInfo: true
-        })
-      }else{
-          // 这里是解决app里onLaunch还没执行完，该页面就执行，从而获取不到全局数据的问题
-        app.testCallBack = res =>{
-          // console.log(res)
-          this.setData({
-            userInfo: res,
-          })
-        }
-      }
-      
+    app.testCallBack = res =>{
+      console.log(res)
+      this.setData({
+        userInfo: res,
+      })
     }
+    // if (app.globalData.userInfo) {
+    //   if (app.globalData.userInfo.nickName){
+    //     this.setData({
+    //       userInfo: app.globalData.userInfo,
+    //       hasUserInfo: true
+    //     })
+    //   }else{
+    //       // 这里是解决app里onLaunch还没执行完，该页面就执行，从而获取不到全局数据的问题
+    //     app.testCallBack = res =>{
+    //       // console.log(res)
+    //       this.setData({
+    //         userInfo: res,
+    //       })
+    //     }
+    //   }
+      
+    // }
     wx.getSetting({
       success: res => {
         if (res.authSetting['scope.userInfo']) {
@@ -82,23 +88,21 @@ Page({
     })
     app.globalData.userInfo = userInfo
     app.scope_userInfo = true
-    app.openidcall = res=>{
-      // console.log(res)
-      if (res) {
-        // 查找用户
-        utils.searchUserInfo(app._openid)
-          .then(res => {
-            // console.log(res)
-            if (res.data.length === 0) {
-              // 添加用户信息
-              utils.addUserInfo(app.globalData.userInfo)
-            } else {
-              // 更新用户信息
-              utils.updata(app._openid, userInfo)
-            }
-          })
-      }
+    if(app._openid){
+         // 查找用户
+         utils.searchUserInfo(app._openid)
+         .then(res => {
+            console.log(res)
+           if (res.data.length === 0) {
+             // 添加用户信息
+             utils.addUserInfo(app.globalData.userInfo)
+           } else {
+             // 更新用户信息
+             utils.updata(app._openid, userInfo)
+           }
+         })
     }
+       
     
   },
   //组件回调事件

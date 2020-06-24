@@ -38,3 +38,5 @@
           <text>邮箱：778277514@QQ.COM</text>
     </van-collapse-item>
  </van-collapse>
+ <view class="version">
+© sonderss V4.0.2</view>

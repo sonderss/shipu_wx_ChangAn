@@ -55,6 +55,6 @@
   confirm-button-text="确 定"
   cancel-button-text="取 消"
 >
-<input   cursor-spacing='20'  type="number" value="{{textvalue}}" class="o-input"  bindinput="getValue" placeholder="{{placeholdertxt}}" />
+<input   cursor-spacing='20' maxlength="3"  type="number" value="{{textvalue}}" class="o-input"  bindinput="getValue" placeholder="{{placeholdertxt}}" />
 
 </van-dialog> 

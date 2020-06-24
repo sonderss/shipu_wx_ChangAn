@@ -127,61 +127,13 @@ Page({
   getData(){
     // 判断用户是否授权
     if (app.scope_userInfo){
-       console.log(app._openid)
-      if (app._openid){
+     
         this.getId()
-      }else{
-        this.callbackid()
-      }
       
     }else{
       this.setData({
         num: ''
       })
-    }
-  },
-  // 回调获取数据
-  callbackid(){
-    app.openidcall = resid => {
-      if (resid) {
-        utils.searchUserInfo(resid)
-          .then(res => {
-            console.log('查询成功', res)
-            if (res.data.length > 0) {
-              this.setData({
-                sign: res.data[res.data.length - 1].sign
-              })
-            } else {
-              this.setData({
-                sign: "数据请求错误，请联系客服"
-              })
-            }
-          })
-        utils.getIndex(resid).then(res => {
-          for (let [index, val] of res.data.entries()) {
-            // console.log(val,index)
-            if (val._openid === resid) {
-              this.setData({
-                num: index + 1
-              })
-            }
-          }
-          if (this.data.num < 100) {
-            this.setData({
-              num: '00' + this.data.num
-            })
-          }
-        }).catch(err => {
-          this.setData({
-            num: ''
-          })
-        })
-      } else {
-        this.setData({
-          sign: "签名信息错误，请联系客服",
-          num: "暂无排名信息"
-        })
-      }
     }
   },
   // 直接获取

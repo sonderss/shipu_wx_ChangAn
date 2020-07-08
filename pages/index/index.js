@@ -9,7 +9,8 @@ Page({
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
     list: [{ names: '历史上的今天', icon: 'icon-lishijilu', size: '40' },
-      { names: '幸运数字', icon: 'icon-shuzi8', size: '40' }
+      { names: '幸运数字', icon: 'icon-shuzi8', size: '40' },
+      { names: '我的步数', icon: 'icon-zoulu-', size: '40' }
     ],
     color:'',
     showPop:false,
@@ -117,6 +118,10 @@ Page({
     } else if (num === "1"){
       // 幸运数字  首先设置人数
       this.setData({ showSetNum:true})
+    }else if(num === '2') {
+      wx.navigateTo({
+        url: `../run/index`
+      })
     }
     
     

@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+      "van-loading": "/miniprogram_npm/vant-weapp/loading/index"
+  },
+    "navigationBarBackgroundColor":"#eee",
+    "navigationBarTitleText":"我的步数"
+}

@@ -28,6 +28,16 @@ const getTime = () => {
  // url:`https://api.weixin.qq.com/cgi-bin/material/batchget_material?access_token=access_token`,
 //  console.log(e.detail.userInfo)
 
+// 时间戳转为日期格式
+
+const getDate = (time) => {
+  let t =  new Date(time * 1000)
+  let year = t.getFullYear()
+  let month = t.getMonth() + 1
+  let day = t.getDate()
+  
+  return `${year}年${month}月${day}日`
+}
 
 const db = wx.cloud.database()
 const _ = db.command
@@ -186,5 +196,6 @@ module.exports = {
   // submitfeedback,
   addfeedback,
   seletfeedback,
-  upfeeddata
+  upfeeddata,
+  getDate
 }

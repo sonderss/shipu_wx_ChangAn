@@ -11,7 +11,8 @@
     "pages/mine/index",
     "pages/feedback/index",
     "pages/about/index",
-    "miniprogram_npm/vant-weapp/modal-c/index"
+    "miniprogram_npm/vant-weapp/modal-c/index",
+    "pages/run/index"
   ],
   "window": {
     "backgroundTextStyle": "light",

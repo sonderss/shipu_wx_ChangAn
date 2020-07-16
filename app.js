@@ -35,6 +35,15 @@ App({
               this.scope_userInfo =false
               this.globalData.userInfo = {}
             })
+            
+               // 获取accessToken
+                wx.cloud.callFunction({
+                  name: "getaccstoken"
+                }).then(res => {
+                  console.log(JSON.parse(res.result))
+                   this.globalData.access_token = JSON.parse(res.result).access_token 
+                   this.accessToken( JSON.parse(res.result))
+                })
       },
       fail:err=>{
         console.log('登录失败')
@@ -71,6 +80,9 @@ App({
   },
   testCallBack(data){
       return data
+  },
+  accessToken(data){
+    return data
   },
   get:function(url,data){
     console.log(url,data)

@@ -11,7 +11,7 @@
   border: 1rpx solid #1e2837;
 }
 .gird:nth-child(n){
-  margin-right:30rpx; 
+  /* margin-right:30rpx;  */
   margin-bottom: 20rpx
 }
 .big{

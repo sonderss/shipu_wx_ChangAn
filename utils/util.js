@@ -184,6 +184,76 @@ const upfeeddata = (openid, feedback) =>{
     })
 }
 
+// 插入上传图片的fileID
+
+const uoLoadImages = (openid,fileid) => {
+  return new Promise((resolve,reject)=>{
+    db.collection('images').where({
+      _openid: openid
+    }).get().then(res => {
+      console.log(res)
+      if(res.data.length === 0){
+          // 创建新用户图库
+          db.collection('images').add({
+            data: {
+              openid:openid,
+              fileids: [
+                fileid
+              ]
+            }
+          }).then(res => {
+           console.log("创建，添加成功",res)
+              resolve(res)
+          }).catch(err => {
+            reject(err)
+          })
+      }else{
+         // 更新已上传用户的图库
+         db.collection('images').where({
+          _openid: openid
+        }).update({
+            data:{
+              fileids: _.push(fileid)
+            }
+        }).then(res=>{
+           console.log("图库更新",res)
+           resolve(res)
+        }).catch(err => {
+          reject(err)
+        })
+      }
+    })
+  })
+}
+
+// 根据用户开发ID获取该用户的图库列表
+
+const userImages = openid => {
+  return new Promise((resolve,reject) => {
+    db.collection("images").where({
+      _openid: openid
+    }).get().then(res => {
+      resolve(res)
+    })
+  })
+    
+}
+
+// 根据文件ID删除图库列表中的某项
+
+const delImage = (openid,fileid) => {
+  console.log(fileid)
+  db.collection('images').where({
+    _openid: openid
+  }).update({
+    data: {
+      fileids: _.pull(fileid)
+    }
+  }).then(res => {
+    console.log(res)
+  })
+}
+
 module.exports = {
   // formatTime: formatTime
   request:request,
@@ -197,5 +267,8 @@ module.exports = {
   addfeedback,
   seletfeedback,
   upfeeddata,
-  getDate
+  getDate,
+  uoLoadImages,
+  userImages,
+  delImage
 }

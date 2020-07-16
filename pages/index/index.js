@@ -10,7 +10,8 @@ Page({
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
     list: [{ names: '历史上的今天', icon: 'icon-lishijilu', size: '40' },
       { names: '幸运数字', icon: 'icon-shuzi8', size: '40' },
-      { names: '我的步数', icon: 'icon-zoulu-', size: '40' }
+      { names: '我的步数', icon: 'icon-zoulu-', size: '40' },
+      { names: '上传图片', icon: 'icon-shangchuan', size: '40' }
     ],
     color:'',
     showPop:false,
@@ -32,12 +33,14 @@ Page({
     })
   },
   onLoad: function () {
-    console.log(app._openid)
     app.testCallBack = res =>{
-      console.log(res)
       this.setData({
         userInfo: res,
       })
+    }
+    // // 获取accessToken
+    app.accessToken = res => {
+      console.log(app.globalData.access_token) 
     }
     // if (app.globalData.userInfo) {
     //   if (app.globalData.userInfo.nickName){
@@ -122,9 +125,11 @@ Page({
       wx.navigateTo({
         url: `../run/index`
       })
+    }else if(num === '3') {
+      wx.navigateTo({
+        url: `../images/index`
+      })
     }
-    
-    
   },
   // 设置人数
   set_num(){

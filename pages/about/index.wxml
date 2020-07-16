@@ -34,9 +34,14 @@
     </van-collapse-item>
     <van-collapse-item clickable='true' name="8">
           <view slot="title" style="display: flex; align-items: center">
+          图床功目前是完全免费使用的吗<van-icon style="margin-left:5rpx;" color="#1989fa" name="question-o" /></view>
+          <text>暂时是免费的，放心使用</text>
+    </van-collapse-item>
+    <van-collapse-item clickable='true' name="9">
+          <view slot="title" style="display: flex; align-items: center">
           怎么样联系到长安酒馆的开发者<van-icon style="margin-left:5rpx;" color="#1989fa" name="question-o" /></view>
           <text>邮箱：778277514@QQ.COM</text>
     </van-collapse-item>
  </van-collapse>
  <view class="version">
-© sonderss V4.0.2</view>
+© sonderss V5.1.1</view>

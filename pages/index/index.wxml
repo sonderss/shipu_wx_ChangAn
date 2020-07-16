@@ -17,7 +17,7 @@
       backgroundColor
       left-icon="//img.yzcdn.cn/public_files/2017/8/10/6af5b7168eed548100d9041f07b7c616.png"
       mode="closeable"
-      text="小程序改版啦！新增长安酒馆Logo以及全新风格大换血，更多精彩内容，请关注公众号天空之外！！！"
+      text="小程序新增图床功能，快到碗里来，图床功能完全免费！！！"
     />
   <!-- 列表 -->
   <view class="list-view">

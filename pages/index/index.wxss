@@ -55,8 +55,8 @@
 /* //列表 */
 .list-view{
   display: flex;
-  justify-content: flex-start;
-  flex-wrap: nowrap;
+  justify-content: space-between;
+  flex-wrap: wrap;
   margin-top: 20rpx;
   padding: 0 30rpx;
 }

@@ -126,9 +126,16 @@ Page({
         url: `../run/index`
       })
     }else if(num === '3') {
-      wx.navigateTo({
-        url: `../images/index`
-      })
+      if (!app.scope_userInfo) {
+        wx.showToast({
+          title: '暂未登陆，请回到首页登陆',
+          icon:"none"
+        })
+        return
+      }
+        wx.navigateTo({
+          url: `../images/index`
+        })
     }
   },
   // 设置人数

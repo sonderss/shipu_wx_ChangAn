@@ -72,9 +72,16 @@ Page({
   },
   // 上传图片
   upLoadFile(){
+    if(this.data.imagesList.length === 0){
+      return this.upImages(1)
+    }
+    this.upImages(9)
+  },
+  // 上传图片方法
+  upImages(num){
     const _self = this
     wx.chooseImage({
-      count: 9,
+      count: num,
       sizeType: ['original', 'compressed'],
       sourceType: ['album', 'camera'],
       success (res) {
@@ -94,14 +101,23 @@ Page({
               if(app._openid){
                 uoLoadImages(app._openid,res.fileID).then(res => {
                   // 上传成功 
+                  _self.setData({
+                    imagesList: [],
+                    privesrc:[]
+                  })
+                  wx.showToast({
+                    title: '上传成功',
+                    icon: 'success',
+                    duration: 2000
+                  })
                   _self.getData()
                  
                 }).catch(err => {
-                    wx.showToast({
-                      title: '上传失败',
-                      icon: 'warn',
-                      duration: 2000
-                    })
+                  wx.showToast({
+                    title: '上传失败',
+                    icon: 'none',
+                    duration: 2000
+                  })
                     setTimeout(function () {
                       wx.hideLoading()
                     }, 2000)
@@ -142,9 +158,12 @@ Page({
           this.setData({
             imagesList:result.result.file_list
           })
-          result.result.file_list.map(item => {
+          if(result.result.file_list && result.result.file_list.length > 0){
+            result.result.file_list.map(item => {
               this.data.privesrc.push(item.download_url)
-          })
+            })
+          }
+         
           wx.hideLoading()
         })
       }else{

@@ -1,6 +1,6 @@
 // pages/images/index.js
 const app = getApp()
-const {uoLoadImages,userImages,delImage} = require('../../utils/util');
+const {uoLoadImages,userImages,setUserImages,delImage} = require('../../utils/util');
 Page({
 
   /**
@@ -9,7 +9,8 @@ Page({
   data: {
        imagesList:[],
        privesrc:[],
-       current:null
+       current:null,
+       nums:9
   },
 
   /**
@@ -19,6 +20,23 @@ Page({
       wx.showLoading({
         title: '加载中',
       })
+      // 判断token是否过期 1594956365
+      // app.globalData.access_token_time
+      console.log(app.globalData.access_token_time)
+      // if(Date.now() >  app.globalData.access_token_time * 1000){
+      //   const _self = this
+      //     // 重新获取token
+      //     wx.cloud.callFunction({
+      //       name:'getaccstoken'
+      //     }).then(res => {
+      //       app.globalData.access_token = JSON.parse(res.result).access_token 
+      //       app.accessToken( JSON.parse(res.result))
+      //       app.globalData.access_token_time =  Math.floor(Date.now() / 1000 ) + JSON.parse(res.result).expires_in // 时间戳 单位 s
+      //       console.log( app.globalData.access_token_time,Date.now() )
+      //       _self.getData()
+      //       return
+      //     })
+      // }
       this.getData()
   },
 
@@ -72,10 +90,10 @@ Page({
   },
   // 上传图片
   upLoadFile(){
-    if(this.data.imagesList.length === 0){
-      return this.upImages(1)
-    }
-    this.upImages(9)
+    // if(this.data.imagesList.length === 0){
+    //   return this.upImages(1)
+    // }
+    this.upImages(this.data.nums)
   },
   // 上传图片方法
   upImages(num){
@@ -92,39 +110,74 @@ Page({
         console.log(res)
         const tempFilePaths = res.tempFilePaths
         tempFilePaths.map( item => {
-            wx.cloud.uploadFile({
-              cloudPath: "img/" + new Date().getTime() +"-"+ Math.floor(Math.random() * 1000),
-              filePath:item
-            }).then(res => {
-              console.log(res)
-              console.log(app._openid)
-              if(app._openid){
-                uoLoadImages(app._openid,res.fileID).then(res => {
-                  // 上传成功 
-                  _self.setData({
-                    imagesList: [],
-                    privesrc:[]
+             wx.getImageInfo({
+                src: item,
+                success: res => {
+                  console.log(res)
+                  let buffer = wx.getFileSystemManager().readFileSync(res.path)
+                  // 判断内容涉黄 违规
+                  wx.cloud.callFunction({
+                    name:'checkImages',
+                    data:{imageUrl:buffer,type:res.type}
+                  }).then(res => {
+                    console.log(res)
+                    if(res.result.errCode !== 0){
+                        wx.showToast({
+                          title: '该图片内容违规，重新上传',
+                          icon: 'none',
+                          duration: 2000
+                        })
+                        return
+                    }else{
+                        // 内容正常 上传
+                        wx.cloud.uploadFile({
+                          cloudPath: "img/" + new Date().getTime() +"-"+ Math.floor(Math.random() * 1000),
+                          filePath:item
+                        }).then(res => {
+                          console.log(res)
+                          console.log(app._openid)
+                          if(app._openid){
+                            uoLoadImages(app._openid,res.fileID).then(res => {
+                              console.log(res)
+                              // 上传成功 
+                              // _self.setData({
+                              //   imagesList: [],
+                              //   privesrc:[]
+                              // })
+                              wx.showToast({
+                                title: '上传成功',
+                                icon: 'success',
+                                duration: 2000
+                              })
+                              _self.upData()
+                            
+                            }).catch(err => {
+                              wx.showToast({
+                                title: '上传失败',
+                                icon: 'none',
+                                duration: 2000
+                              })
+                                setTimeout(function () {
+                                  wx.hideLoading()
+                                }, 2000)
+                            })
+                          }
+                          
+                        })
+                    }
+                  }).catch(err => {
+                    console.log(err)
+                    wx.showToast({
+                      title: '图片内容违规，请重试',
+                      icon: 'none',
+                      duration: 2000
+                    })
+                    return
                   })
-                  wx.showToast({
-                    title: '上传成功',
-                    icon: 'success',
-                    duration: 2000
-                  })
-                  _self.getData()
-                 
-                }).catch(err => {
-                  wx.showToast({
-                    title: '上传失败',
-                    icon: 'none',
-                    duration: 2000
-                  })
-                    setTimeout(function () {
-                      wx.hideLoading()
-                    }, 2000)
-                })
-              }
-              
-            }) 
+                }
+             })
+            
+             
         })
       }
     })
@@ -134,6 +187,37 @@ Page({
     wx.previewImage({
       current: url.currentTarget.dataset.url, // 当前显示图片的http链接
       urls: this.data.privesrc
+    })
+  },
+  // 上传成功后更新数据
+  upData(){
+    const _self = this
+    userImages(app._openid).then(res => {
+      if(res.data.length === 1 && res.data[0].fileids.length >= 1){
+        let arr = []
+        res.data[0].fileids.map(item => {
+           let obj = {fileid:item,max_age:7200}
+           arr.push(obj)
+        })
+        wx.cloud.callFunction({
+          name: "getList",
+          data: {
+            access_token: app.globalData.access_token,
+            file_list: arr
+          }
+        }).then(result => {
+          _self.data.privesrc = []
+          _self.setData({
+            imagesList:result.result.file_list
+          })
+          if(result.result.file_list && result.result.file_list.length > 0){
+            result.result.file_list.map(item => {
+              _self.data.privesrc.push(item.download_url)
+            })
+          }
+          wx.hideLoading()
+        })
+      }
     })
   },
   // 获取图床数据
@@ -155,6 +239,22 @@ Page({
           }
         }).then(result => {
           console.log(result)
+          if(result.result.errcode ===  40001){
+            // token过期
+            console.log("重新获取token")
+            const _self = this
+            // 重新获取token
+            wx.cloud.callFunction({
+              name:'getaccstoken'
+            }).then(res => {
+              app.globalData.access_token = JSON.parse(res.result).access_token 
+              app.accessToken( JSON.parse(res.result))
+              app.globalData.access_token_time =  Math.floor(Date.now() / 1000 ) + JSON.parse(res.result).expires_in // 时间戳 单位 s
+              console.log( app.globalData.access_token_time,Date.now() )
+              _self.getData()
+            })
+            return
+          }
           this.setData({
             imagesList:result.result.file_list
           })
@@ -167,7 +267,16 @@ Page({
           wx.hideLoading()
         })
       }else{
-         // 该用户图床没有数据
+         // 该用户图床没有数据 默认创建一个图库
+         setUserImages(app._openid).then(res => {
+           // 预判断用户上传图片，先创建一个图库待用，首次上传即可多次上传
+           console.log(res)
+         }).catch(err => {
+           console.log(err)
+            this.setData({
+              nums:1
+            })
+         })
          wx.showToast({
             title: "图床啥也没有0.0",
             icon: 'none',
@@ -182,6 +291,11 @@ Page({
   },
   // 显示删除图片按钮
   delItem(e){
+    wx.vibrateLong({
+      complete: res => {
+        console.log(res)
+      }
+    })
     this.setData({
       current:e.currentTarget.dataset.index
     })

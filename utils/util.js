@@ -239,6 +239,25 @@ const userImages = openid => {
     
 }
 
+// 创建用户图库
+
+const setUserImages = openid => {
+   // 创建新用户图库
+ return new Promise( (resolve,reject) => {
+  db.collection('images').add({
+    data: {
+      openid:openid,
+      fileids: []
+    }
+  }).then(res => {
+   console.log("创建成功",res)
+      resolve(res)
+  }).catch(err => {
+    reject(err)
+  })
+ })  
+}
+
 // 根据文件ID删除图库列表中的某项
 
 const delImage = (openid,fileid) => {
@@ -270,5 +289,6 @@ module.exports = {
   getDate,
   uoLoadImages,
   userImages,
-  delImage
+  delImage,
+  setUserImages
 }

@@ -33,7 +33,7 @@ page {
 }
 
 .image_view {
-  width: 25%;
+  width: calc(33.3% - 40rpx); 
   height: 200rpx;
   margin: 20rpx;
   position: relative;

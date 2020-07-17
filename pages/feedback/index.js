@@ -36,7 +36,7 @@ Page({
     const that = this
     if (!app.scope_userInfo) {
       wx.showToast({
-        title: '暂未登陆，请回到首页登陆',
+        title: '暂未登录，请回到首页登录',
         icon: "none"
       })
       return

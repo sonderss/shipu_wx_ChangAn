@@ -43,6 +43,7 @@ App({
                   console.log(JSON.parse(res.result))
                    this.globalData.access_token = JSON.parse(res.result).access_token 
                    this.accessToken( JSON.parse(res.result))
+                   this.globalData.access_token_time =  Math.floor(Date.now() / 1000 ) + JSON.parse(res.result).expires_in // 时间戳 单位 s
                 })
       },
       fail:err=>{
@@ -76,7 +77,8 @@ App({
   globalData: {
     userInfo: {nickName:''},
     historyList:[],
-    access_token:''
+    access_token:'',
+    access_token_time:''
   },
   testCallBack(data){
       return data

@@ -1,37 +1,40 @@
 <!--pages/run/index.wxml-->
-<view class="main main-top"  wx:if="{{isSkeleton}}">
-    <view class="main_content_left">
-        <view style="padding-right:20rpx;color:#000;font-weight:blod">今日步数</view>
-        <!-- <view class="image_user">
+<view class="main main-top" wx:if="{{isSkeleton}}">
+	<view class="main_content_left">
+		<view style="padding-right:20rpx;color:#000;font-weight:blod">今日步数</view>
+		<!-- <view class="image_user">
             <image mode="widthFix" src='{{userInfo.avatarUrl ? userInfo.avatarUrl : "../../static/changan.jpg" }}' />
         </view> -->
-        <!-- <view class="user_info">
+		<!-- <view class="user_info">
             <view>{{userInfo.nickName}}</view>
             <view class="time">{{info.timestamp}}</view>
         </view> -->
-      </view>
+	</view>
 
-      <view class="main_conetnt_rigth">
-        <view>{{info.step}}</view>
-      </view>
+	<view class="main_conetnt_rigth">
+		<view>{{info.step}}</view>
+	</view>
 </view>
-<view  wx:if="{{isSkeleton}}" class="main" wx:for="{{list}}"  wx:key="{{index}}">
-  <view class="main_content_left">
-    <view style="padding-right:20rpx;color:#000;font-weight:blod;width:50rpx;text-align:center">{{index+1}}</view>
-    <view class="image_user">
-        <image mode="widthFix" src='{{userInfo.avatarUrl ? userInfo.avatarUrl : "../../static/changan.jpg" }}' />
-    </view>
-    <view class="user_info">
-        <view>{{userInfo.nickName}}</view>
-        <view class="time">{{item.timestamp}}</view>
-    </view>
-  </view>
+<view wx:if="{{isSkeleton}}" class="main" wx:for="{{list}}" wx:key="{{index}}">
+	<view class="main_content_left">
+		<view style="padding-right:20rpx;color:#000;font-weight:blod;width:50rpx;text-align:center">{{index+1}}</view>
+		<view class="image_user">
+			<image mode="widthFix" src='{{userInfo.avatarUrl ? userInfo.avatarUrl : "../../static/changan.jpg" }}' />
+		</view>
+		<view class="user_info">
+			<view>{{userInfo.nickName}}</view>
+			<view class="time">{{item.timestamp}}</view>
+		</view>
+	</view>
 
-  <view class="main_conetnt_rigth">
-    <view>{{item.step}}</view>
-  </view>
+	<view class="main_conetnt_rigth">
+		<view>{{item.step}}</view>
+	</view>
 </view>
-<view class="loading"  wx:if="{{!isSkeleton}}">
-<van-loading size="24px" color="#1989fa" vertical>加载中...</van-loading>
+<view class="loading" wx:if="{{isLoading}}">
+	<van-loading size="24px" color="#1989fa" vertical>加载中...</van-loading>
+</view>
+<view class="loading" wx:if="{{isDesc}}">
+  暂时没有权限
+</view>
 
-</view>

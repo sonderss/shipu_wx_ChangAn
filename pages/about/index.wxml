@@ -30,11 +30,11 @@
     <van-collapse-item clickable='true' name="7">
           <view slot="title" style="display: flex; align-items: center">
           长安酒馆需要别人参与开发吗<van-icon style="margin-left:5rpx;" color="#1989fa" name="question-o" /></view>
-          <text>需要。无论是界面设计还是功能开发，都敞开大门热烈欢迎</text>
+          <text>暂不需要。</text>
     </van-collapse-item>
     <van-collapse-item clickable='true' name="8">
           <view slot="title" style="display: flex; align-items: center">
-          图床功目前是完全免费使用的吗<van-icon style="margin-left:5rpx;" color="#1989fa" name="question-o" /></view>
+          图床功能目前是免费使用的吗<van-icon style="margin-left:5rpx;" color="#1989fa" name="question-o" /></view>
           <text>暂时是免费的，放心使用</text>
     </van-collapse-item>
     <van-collapse-item clickable='true' name="9">

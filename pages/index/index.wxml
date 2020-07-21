@@ -21,7 +21,7 @@
     />
   <!-- 列表 -->
   <view class="list-view">
-    <gird bindcustomevent='test' icon='{{item.icon}}'  wx:for='{{list}}' wx:key="{{index}}" size='{{item.size}}' num='{{index}}' name='{{item.names}}'></gird>
+    <gird  bindcustomevent='test' icon='{{item.icon}}'  wx:for='{{list}}' wx:key="{{index}}" size='{{item.size}}' num='{{index}}' name='{{item.names}}'></gird>
   </view>
   <van-popup style=" overflow: hidden" close-on-click-overlay="{{closeoverlay}}" overlay-style="background-color: rgba(0, 0, 0, 1);" custom-style="background-color: rgba(0, 0, 0, 0.2);" closeable
    show="{{ showPop }}" z-index="9999" bind:close="onClose"

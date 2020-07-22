@@ -1,0 +1,9 @@
+/* miniprogram_npm/vant-weapp/pay/index.wxss */
+@import '../../../static/wxss/iconfont.wxss';
+.pay{
+  color: #1e2837;
+  font-size: 80rpx;
+  position: fixed;
+  right: 40rpx;
+  bottom: 40rpx;
+}

@@ -29,7 +29,7 @@
 		"userConfirmedUseCompilerModuleSwitch": false
 	},
 	"compileType": "miniprogram",
-	"libVersion": "2.11.3",
+	"libVersion": "2.12.0",
 	"appid": "wx3c106149b6bcef83",
 	"projectname": "foods",
 	"debugOptions": {

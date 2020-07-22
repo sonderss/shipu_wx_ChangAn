@@ -1,0 +1,4 @@
+<!--miniprogram_npm/vant-weapp/pay/index.wxml-->
+<button   open-type="contact" session-from="pay">
+  <text class="iconfont icon-paypal pay" bindtap="evnetBack"></text>
+</button>

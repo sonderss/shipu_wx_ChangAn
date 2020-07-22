@@ -194,4 +194,8 @@ Page({
   onShareAppMessage: function () {
 
   },
+  // 展示我的收款二维码
+  // showPay(){
+  //   console.log("展示我的收款二维码")
+  // }
 })

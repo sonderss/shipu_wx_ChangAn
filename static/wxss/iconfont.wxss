@@ -1,11 +1,11 @@
 @font-face {
   font-family: 'iconfont';  /* project id 1673983 */
-  src: url('//at.alicdn.com/t/font_1673983_x0qn21klsoc.eot');
-  src: url('//at.alicdn.com/t/font_1673983_x0qn21klsoc.eot?#iefix') format('embedded-opentype'),
-  url('//at.alicdn.com/t/font_1673983_x0qn21klsoc.woff2') format('woff2'),
-  url('//at.alicdn.com/t/font_1673983_x0qn21klsoc.woff') format('woff'),
-  url('//at.alicdn.com/t/font_1673983_x0qn21klsoc.ttf') format('truetype'),
-  url('//at.alicdn.com/t/font_1673983_x0qn21klsoc.svg#iconfont') format('svg');
+  src: url('//at.alicdn.com/t/font_1673983_6sn8pr0439.eot');
+  src: url('//at.alicdn.com/t/font_1673983_6sn8pr0439.eot?#iefix') format('embedded-opentype'),
+  url('//at.alicdn.com/t/font_1673983_6sn8pr0439.woff2') format('woff2'),
+  url('//at.alicdn.com/t/font_1673983_6sn8pr0439.woff') format('woff'),
+  url('//at.alicdn.com/t/font_1673983_6sn8pr0439.ttf') format('truetype'),
+  url('//at.alicdn.com/t/font_1673983_6sn8pr0439.svg#iconfont') format('svg');
 }
 .iconfont {
   font-family: "iconfont" !important;
@@ -46,4 +46,8 @@
 .icon-shanchuhang:before {
   content: "\e660";
   color: red;
+}
+
+.icon-paypal:before {
+  content: "\e63a";
 }

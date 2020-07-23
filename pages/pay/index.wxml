@@ -1,0 +1,37 @@
+<!--pages/pay/index.wxml-->
+<view class="main" style="background-image: url('{{imageurl}}')">
+
+<!-- 第一张背景图的内容 -->
+<view class="one-pay" wx:if="{{current === 1}}">
+   <view class="btn" bindtap="onenext">下一步</view>
+</view>
+
+<!-- 第二张背景图的内容 -->
+<view class="one-pay" wx:if="{{current === 2}}">
+   <view class="btn" bindtap="twonext">下一步</view>
+</view>
+
+<!-- 第三张背景图的内容 -->
+<view class="one-pay" wx:if="{{current === 3}}">
+   <view class="btn" bindtap="threenext">下一步</view>
+</view>
+
+<!-- 第四张背景图的内容 -->
+<view class="one-pay" wx:if="{{current === 4}}">
+ 
+    <button   id="pay"  plain open-type="contact" session-from="pay">
+       知道了
+    </button>
+  
+</view>
+
+
+<!-- 上一步 -->
+<view class="btns" wx:if="{{current !== 1 && current !== 4}}" bindtap="prv">上一步</view>
+
+<!-- 重新走一遍 -->
+<view class="btns" wx:if="{{ current === 4}}" bindtap="noWay">不知道</view>
+
+
+
+</view>

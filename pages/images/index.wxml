@@ -7,14 +7,14 @@
 	</view>
 
 	<view class="main">
-		<view class="image_view" wx:for="{{imagesList}}" wx:key="{{index}}">
+		<view class="image_view" wx:for="{{imagesList}}" wx:key="{{item.fileid}}">
 			<text id="delImage" bindtap="del" data-index="{{index}}" data-fileid="{{item.fileid}}" class="iconfont icon-shanchuhang del" wx:if="{{current === index ? true : false}}"></text>
 			<image bindlongpress="delItem" data-index="{{index}}" lazy-load mode="aspectFit" bindtap="prvimage" data-url="{{item.download_url}}" src='{{item.download_url}}' />
 		</view>
 
 	</view>
 
-
+ <!-- <canvas wx:if="{{showCavas}}" canvas-id='myCanvas'></canvas> -->
 
 
 </view>

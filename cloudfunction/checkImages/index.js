@@ -6,9 +6,10 @@ cloud.init()
 // 云函数入口函数
 exports.main = async (event, context) => {
   // let buffer = wx.getFileSystemManager().readFileSync(event.imageUrl)
+  console.log("event",event) // 750px x 1334px
   return await  cloud.openapi.security.imgSecCheck({
       media: {
-        contentType: `image/${event.type}`,
+        contentType: `image/${event.info.type}`,
         value:  Buffer.from(event.imageUrl) 
       }
     })

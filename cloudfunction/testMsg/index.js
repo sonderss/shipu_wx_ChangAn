@@ -27,22 +27,23 @@ exports.main = async (event, context) => {
           content: '长按识别二维码，给钱！',
         }
       })
-      const result =  await cloud.openapi.customerServiceMessage.send({
+      const result =  cloud.openapi.customerServiceMessage.send({
          touser: wxContext.OPENID,
          msgtype: 'image',
          image: {
              mediaId: mid.mediaId
-         },
+         }
        })
        return result
      } catch {
-       await cloud.openapi.customerServiceMessage.send({
+       const rescatch =  await cloud.openapi.customerServiceMessage.send({
          touser: wxContext.OPENID,
          msgtype: 'text',
          text: {
            content: '打赏码错误，请发送:打赏',
          },
        })
+       console.log("rescatch",rescatch)
      }
     
   }

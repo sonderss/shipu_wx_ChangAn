@@ -1,0 +1,77 @@
+/* pages/pay/index.wxss */
+@import '../../static/wxss/iconfont.wxss';
+page{background-color: #5c5c5c;}
+.main{
+  width: 100vw;
+  height: 100vh;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position-x: center;
+  position: relative;
+}
+.btn{
+  width: 150rpx;
+  height: 50rpx;
+  background-color: #1e2837;
+  border-radius: 5rpx;
+  color: #fff;
+  position: absolute;
+  top:300rpx;
+  right: 50rpx;
+  text-align: center;
+  line-height: 50rpx;
+  font-size: 20rpx;
+  z-index: 9999;
+  box-shadow: 0 5rpx #5f6680;
+}
+.btn:active{
+  box-shadow: 0 4rpx #5f6680;
+  -webkit-transform:translateY(4rpx);
+  -moz-transform:translateY(4rpx);
+  -ms-transform:translateY(4rpx) ;
+  transform: translateY(4rpx);
+}
+.btns:active{
+  box-shadow: 0 4rpx #5f6680;
+  -webkit-transform:translateY(4rpx);
+  -moz-transform:translateY(4rpx);
+  -ms-transform:translateY(4rpx) ;
+  transform: translateY(4rpx);
+}
+.btns{
+  width: 150rpx;
+  height: 50rpx;
+  background-color: #1e2837;
+  border-radius: 5rpx;
+  color: #fff;
+  position: absolute;
+  top: 200rpx;
+  right: 50rpx;
+  text-align: center;
+  line-height: 50rpx;
+  font-size: 20rpx;
+  z-index: 9999;
+  box-shadow: 0 5rpx #5f6680;
+}
+#pay{
+  width: 150rpx;
+  height: 50rpx;
+  background-color: #1e2837;
+  border-radius: 5rpx;
+  color: #fff;
+  position: absolute;
+  top:300rpx;
+  right: 50rpx;
+  text-align: center;
+  line-height: 50rpx;
+  font-size: 20rpx;
+  z-index: 9999;
+  box-shadow: 0 5rpx #5f6680;
+}
+#pay:active{
+  box-shadow: 0 4rpx #5f6680;
+  -webkit-transform:translateY(4rpx);
+  -moz-transform:translateY(4rpx);
+  -ms-transform:translateY(4rpx) ;
+  transform: translateY(4rpx);
+}

@@ -10,7 +10,8 @@ Page({
        imagesList:[],
        privesrc:[],
        current:null,
-       nums:9
+       nums:9,
+       showCavas:true
   },
 
   /**
@@ -112,68 +113,71 @@ Page({
         tempFilePaths.map( item => {
              wx.getImageInfo({
                 src: item,
-                success: res => {
-                  console.log(res)
-                  let buffer = wx.getFileSystemManager().readFileSync(res.path)
-                  // 判断内容涉黄 违规
-                  wx.cloud.callFunction({
-                    name:'checkImages',
-                    data:{imageUrl:buffer,type:res.type}
-                  }).then(res => {
-                    console.log(res)
-                    if(res.result.errCode !== 0){
-                        wx.showToast({
-                          title: '该图片内容违规，重新上传',
-                          icon: 'none',
-                          duration: 2000
-                        })
-                        return
-                    }else{
-                        // 内容正常 上传
-                        wx.cloud.uploadFile({
-                          cloudPath: "img/" + new Date().getTime() +"-"+ Math.floor(Math.random() * 1000),
-                          filePath:item
-                        }).then(res => {
-                          console.log(res)
-                          console.log(app._openid)
-                          if(app._openid){
-                            uoLoadImages(app._openid,res.fileID).then(res => {
-                              console.log(res)
-                              // 上传成功 
-                              // _self.setData({
-                              //   imagesList: [],
-                              //   privesrc:[]
-                              // })
-                              wx.showToast({
-                                title: '上传成功',
-                                icon: 'success',
-                                duration: 2000
-                              })
-                              _self.upData()
-                            
-                            }).catch(err => {
-                              wx.showToast({
-                                title: '上传失败',
-                                icon: 'none',
-                                duration: 2000
-                              })
-                                setTimeout(function () {
-                                  wx.hideLoading()
-                                }, 2000)
-                            })
-                          }
-                          
-                        })
-                    }
-                  }).catch(err => {
-                    console.log(err)
+                success: resaaa => {
+                  //  750px x 1334px
+                  console.log(resaaa)
+                  if(resaaa.width > 750 && resaaa.height >  1334 ){
                     wx.showToast({
-                      title: '图片内容违规，请重试',
+                      title: '图片尺寸过大！！！',
                       icon: 'none',
                       duration: 2000
                     })
-                    return
-                  })
+                    setTimeout(function () {
+                      wx.hideLoading()
+                    }, 2000)
+                    // const ctx = wx.createCanvasContext("myCanvas")
+                    //   // 裁剪 成功后去检测内容 
+                    //   ctx.drawImage(resaaa.path)
+                    //   ctx.draw()
+                    //   ctx.save()
+                    //     wx.canvasToTempFilePath({
+                    //       x: 0,
+                    //       y: 0,
+                    //       width: resaaa.width,
+                    //       height: resaaa.height,
+                    //       destWidth: 740,
+                    //       destHeight: 1234,
+                    //       canvasId: 'myCanvas',
+                    //       fileType: resaaa.type === "jpeg" ? 'jpg' : 'png',
+                    //       success(restem) {
+                    //         console.log(restem.tempFilePath)
+                    //         wx.getImageInfo({
+                    //           src: restem.tempFilePath,
+                    //           success: ress => {
+                    //             console.log(ress)
+                    //             _self.setData({
+                    //               showCavas:false
+                    //             })
+                    //              _self.getA(ress,item)
+                    //             // let buffer = wx.getFileSystemManager().readFileSync(ress.path)
+                    //             // console.log(buffer)
+                    //             // // 判断内容涉黄 违规
+                    //             // wx.cloud.callFunction({
+                    //             //   name:'checkImages',
+                    //             //   data:{imageUrl:buffer,info:ress}
+                    //             // }).then(resabcd => {
+                    //             //       console.log(resabcd)
+                    //             // })
+                    //           }
+                    //         })
+                    //       },
+                    //       fail: err => {
+                    //         wx.showToast({
+                    //           title: '画布异常，请重试',
+                    //           icon: 'none',
+                    //           duration: 2000
+                    //         })
+                    //         setTimeout(function () {
+                    //           wx.hideLoading()
+                    //         }, 2000)
+                    //       }
+                    //     })
+                      
+                    // return 
+                  }else{
+                    _self.getA(resaaa,item)
+                  }
+                  
                 }
              })
             
@@ -181,6 +185,75 @@ Page({
         })
       }
     })
+  },
+  // s
+  getA(restest,item){
+    const _self = this
+    console.log(restest)
+    let buffer = wx.getFileSystemManager().readFileSync(restest.path)
+    console.log(buffer)
+          // 判断内容涉黄 违规
+          wx.cloud.callFunction({
+            name:'checkImages',
+            data:{imageUrl:buffer,info:restest}
+          }).then(resa => {
+            console.log(resa)
+            if(resa.result.errCode !== 0){
+                wx.showToast({
+                  title: '该图片内容违规，重新上传',
+                  icon: 'none',
+                  duration: 2000
+                })
+                return
+            }else{
+                // 内容正常 上传
+                wx.cloud.uploadFile({
+                  cloudPath: "img/" + new Date().getTime() +"-"+ Math.floor(Math.random() * 1000),
+                  filePath:item
+                }).then(resb => {
+                  console.log(resb)
+                  console.log(app._openid)
+                  if(app._openid){
+                    uoLoadImages(app._openid,resb.fileID).then(resc => {
+                      console.log(resc)
+                      // 上传成功 
+                      // _self.setData({
+                      //   imagesList: [],
+                      //   privesrc:[]
+                      // })
+                      wx.showToast({
+                        title: '上传成功',
+                        icon: 'success',
+                        duration: 2000
+                      })
+                      _self.upData()
+                    
+                    }).catch(err => {
+                      wx.showToast({
+                        title: '上传失败',
+                        icon: 'none',
+                        duration: 2000
+                      })
+                        setTimeout(function () {
+                          wx.hideLoading()
+                        }, 2000)
+                    })
+                  }
+                  
+                })
+            }
+          }).catch(err => {
+            
+            wx.showToast({
+              title: '系统异常，请重试',
+              icon: 'none',
+              duration: 2000
+            })
+            setTimeout(function () {
+              wx.hideLoading()
+            }, 2000)
+          })
+  
   },
   // 预览图片
   prvimage(url){

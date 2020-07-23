@@ -58,6 +58,5 @@
 <input   cursor-spacing='20' maxlength="3"  type="number" value="{{textvalue}}" class="o-input"  bindinput="getValue" placeholder="{{placeholdertxt}}" />
 
 </van-dialog> 
-
-<pay ></pay>
+<pay bindshowPayImage="showPay"></pay>
  

@@ -94,7 +94,16 @@ Page({
     // if(this.data.imagesList.length === 0){
     //   return this.upImages(1)
     // }
-    this.upImages(this.data.nums)
+    console.log(this.data.imagesList.length)
+    if(this.data.imagesList.length >= 50){
+      wx.showToast({
+        title: '图床上限50张',
+        icon: 'none',
+        duration: 2000
+      })
+      return
+    }
+    this.upImages(50 - this.data.imagesList.length > 9 ? 9 : 50 - this.data.imagesList.length )
   },
   // 上传图片方法
   upImages(num){
@@ -116,7 +125,9 @@ Page({
                 success: resaaa => {
                   //  750px x 1334px
                   console.log(resaaa)
-                  if(resaaa.width > 750 && resaaa.height >  1334 ){
+                  if(resaaa.width <= 750 || resaaa.height <=  1334 ){
+                      _self.getA(resaaa,item)
+                  }else{
                     wx.showToast({
                       title: '图片尺寸过大！！！',
                       icon: 'none',
@@ -125,57 +136,6 @@ Page({
                     setTimeout(function () {
                       wx.hideLoading()
                     }, 2000)
-                    // const ctx = wx.createCanvasContext("myCanvas")
-                    //   // 裁剪 成功后去检测内容 
-                    //   ctx.drawImage(resaaa.path)
-                    //   ctx.draw()
-                    //   ctx.save()
-                    //     wx.canvasToTempFilePath({
-                    //       x: 0,
-                    //       y: 0,
-                    //       width: resaaa.width,
-                    //       height: resaaa.height,
-                    //       destWidth: 740,
-                    //       destHeight: 1234,
-                    //       canvasId: 'myCanvas',
-                    //       fileType: resaaa.type === "jpeg" ? 'jpg' : 'png',
-                    //       success(restem) {
-                    //         console.log(restem.tempFilePath)
-                    //         wx.getImageInfo({
-                    //           src: restem.tempFilePath,
-                    //           success: ress => {
-                    //             console.log(ress)
-                    //             _self.setData({
-                    //               showCavas:false
-                    //             })
-                    //              _self.getA(ress,item)
-                    //             // let buffer = wx.getFileSystemManager().readFileSync(ress.path)
-                    //             // console.log(buffer)
-                    //             // // 判断内容涉黄 违规
-                    //             // wx.cloud.callFunction({
-                    //             //   name:'checkImages',
-                    //             //   data:{imageUrl:buffer,info:ress}
-                    //             // }).then(resabcd => {
-                    //             //       console.log(resabcd)
-                    //             // })
-                    //           }
-                    //         })
-                    //       },
-                    //       fail: err => {
-                    //         wx.showToast({
-                    //           title: '画布异常，请重试',
-                    //           icon: 'none',
-                    //           duration: 2000
-                    //         })
-                    //         setTimeout(function () {
-                    //           wx.hideLoading()
-                    //         }, 2000)
-                    //       }
-                    //     })
-                      
-                    // return 
-                  }else{
-                    _self.getA(resaaa,item)
                   }
                   
                 }
@@ -189,7 +149,7 @@ Page({
   // s
   getA(restest,item){
     const _self = this
-    console.log(restest)
+    console.log(app.globalData.userInfo.nickName)
     let buffer = wx.getFileSystemManager().readFileSync(restest.path)
     console.log(buffer)
           // 判断内容涉黄 违规
@@ -208,7 +168,7 @@ Page({
             }else{
                 // 内容正常 上传
                 wx.cloud.uploadFile({
-                  cloudPath: "img/" + new Date().getTime() +"-"+ Math.floor(Math.random() * 1000),
+                  cloudPath: `${app.globalData.userInfo.nickName}/` + new Date().getTime() +"-"+ Math.floor(Math.random() * 1000),
                   filePath:item
                 }).then(resb => {
                   console.log(resb)
@@ -304,6 +264,7 @@ Page({
            arr.push(obj)
         })
         console.log(arr)
+        console.log( app.globalData.access_token, arr)
         wx.cloud.callFunction({
           name: "getList",
           data: {

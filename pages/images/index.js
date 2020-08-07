@@ -168,7 +168,7 @@ Page({
             }else{
                 // 内容正常 上传
                 wx.cloud.uploadFile({
-                  cloudPath: `${app.globalData.userInfo.nickName}/` + new Date().getTime() +"-"+ Math.floor(Math.random() * 1000),
+                  cloudPath: `${app.globalData.userInfo.nickName ? app.globalData.userInfo.nickName : 'wuming'}/` + new Date().getTime() +"-"+ Math.floor(Math.random() * 1000),
                   filePath:item
                 }).then(resb => {
                   console.log(resb)

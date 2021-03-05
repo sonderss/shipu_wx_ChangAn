@@ -74,6 +74,11 @@ App({
   },
   scope_userInfo:false,
   _openid:'',
+  list: [{ names: '历史上的今天', icon: 'icon-lishijilu', size: '40' },
+    { names: '幸运数字', icon: 'icon-shuzi8', size: '40' },
+    { names: '我的步数', icon: 'icon-zoulu-', size: '40' },
+    { names: '上传图片', icon: 'icon-shangchuan', size: '40' }
+  ],
   globalData: {
     userInfo: {nickName:''},
     historyList:[],
@@ -85,6 +90,20 @@ App({
   },
   accessToken(data){
     return data
+  },
+  getListIndex(){
+      return new Promise((resolve,reject) => {
+        if(this._openid  === 'od82Q4gz-ubMfvb0AKM5Nq2Oqp08' || this._openid  === 'od82Q4sem6TjaCEM5oaDv52zo8qA'){
+          let arr = [ { names: '单反相机', icon: 'icon-shuma-danfan', size: '40' },{ names: '', icon: '', size: '40' }]
+          // this.setData({
+          //   list: this.list.concat(arr)
+          // })
+          this.list =  this.list.concat(arr)
+           resolve( this.list )
+          console.log('this.list',this.list)
+        }
+        reject([])
+      })
   },
   get:function(url,data){
     console.log(url,data)

@@ -14,7 +14,8 @@
     "miniprogram_npm/vant-weapp/modal-c/index",
     "pages/run/index",
     "pages/images/index",
-    "pages/pay/index"
+    "pages/pay/index",
+    "pages/carmer/index"
   ],
   "window": {
     "backgroundTextStyle": "light",

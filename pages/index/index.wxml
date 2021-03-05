@@ -43,7 +43,6 @@
     </view>
     
   </van-popup>
-
 <van-dialog
   use-slot
   title="设置参与人数"

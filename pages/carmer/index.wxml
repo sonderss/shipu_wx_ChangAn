@@ -1,0 +1,10 @@
+<view class="main">
+
+<van-panel title="单反相机专业爱好者" desc="如有查看，请联系小程序作者" status="活动">
+  <view style="padding:10px">周六在小区使用单反所拍一张花草长椅图片，未能保存，颇为遗憾。在这里看能不能联系到单反使用者，若看到，请点击下方按钮联系客服</view>
+</van-panel>
+
+<view style="margin-bottom:50px"></view>
+<button type="primary" open-type="contact" >联系客服</button>
+
+</view>

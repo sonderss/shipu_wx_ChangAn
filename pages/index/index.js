@@ -8,11 +8,7 @@ Page({
     userInfo: { nickName:''},
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
-    list: [{ names: '历史上的今天', icon: 'icon-lishijilu', size: '40' },
-      { names: '幸运数字', icon: 'icon-shuzi8', size: '40' },
-      { names: '我的步数', icon: 'icon-zoulu-', size: '40' },
-      { names: '上传图片', icon: 'icon-shangchuan', size: '40' }
-    ],
+    list: app.list,
     color:'',
     showPop:false,
     num:0,
@@ -33,6 +29,7 @@ Page({
     })
   },
   onLoad: function () {
+    console.log('load')
     app.testCallBack = res =>{
       this.setData({
         userInfo: res,
@@ -42,6 +39,11 @@ Page({
     app.accessToken = res => {
       console.log(app.globalData.access_token) 
     }
+    app.getListIndex().then(res => {
+      console.log(res)
+    }).catch(err => {
+      console.log(err)
+    })
     // if (app.globalData.userInfo) {
     //   if (app.globalData.userInfo.nickName){
     //     this.setData({
@@ -136,6 +138,21 @@ Page({
         wx.navigateTo({
           url: `../images/index`
         })
+    }else if(num === '4'){
+        console.log('单反相机')
+          console.log(app._openid)
+          if(app._openid  === 'od82Q4gz-ubMfvb0AKM5Nq2Oqp08' || app._openid  === 'od82Q4sem6TjaCEM5oaDv52zo8qA'){
+                console.log('跳转详情')
+                wx.navigateTo({
+                  url: '../carmer/index',
+                })
+          }else{
+            wx.showToast({
+              title: '抱歉，暂无权限查看',
+              icon:"none"
+            })
+            return
+          }
     }
   },
   // 设置人数

@@ -39,11 +39,11 @@ Page({
     app.accessToken = res => {
       console.log(app.globalData.access_token) 
     }
-    app.getListIndex().then(res => {
-      console.log(res)
-    }).catch(err => {
-      console.log(err)
-    })
+    // app.getListIndex().then(res => {
+    //   console.log(res)
+    // }).catch(err => {
+    //   console.log(err)
+    // })
     // if (app.globalData.userInfo) {
     //   if (app.globalData.userInfo.nickName){
     //     this.setData({
@@ -141,11 +141,13 @@ Page({
     }else if(num === '4'){
         console.log('单反相机')
           console.log(app._openid)
-          if(app._openid  === 'od82Q4gz-ubMfvb0AKM5Nq2Oqp08' || app._openid  === 'od82Q4sem6TjaCEM5oaDv52zo8qA'){
+          // app._openid  === 'od82Q4gz-ubMfvb0AKM5Nq2Oqp08' || 
+          if(app._openid  === 'od82Q4sem6TjaCEM5oaDv52zo8qA'){
                 console.log('跳转详情')
                 wx.navigateTo({
                   url: '../carmer/index',
                 })
+                return
           }else{
             wx.showToast({
               title: '抱歉，暂无权限查看',
@@ -153,6 +155,17 @@ Page({
             })
             return
           }
+    }else if(num === '5'){
+      console.log('小牛英语')
+      wx.navigateToMiniProgram({
+        appId: 'wx6d5c28b1312cc46c',
+        path: 'pages/main/index',
+        success(res) {
+          // 打开成功
+        },
+        fail: err => {
+        }
+      })
     }
   },
   // 设置人数

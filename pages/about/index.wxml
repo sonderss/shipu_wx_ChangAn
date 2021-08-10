@@ -1,27 +1,30 @@
 <!--pages/about/index.wxml-->
- <van-collapse  value="{{ activeNames }}" bind:change="onChange">
-    <van-collapse-item clickable='true' name="1" title="" icon="">
+
+<view class="main_view_about">
+
+ <van-collapse class="collapse_"  value="{{ activeNames }}" bind:change="onChange">
+    <!-- <van-collapse-item clickable='true' name="1" title="" icon="">
           <view slot="title" style="display: flex; align-items: center">长安酒馆是什么<van-icon style="margin-left:5rpx;" color="#1989fa" name="question-o" /></view>
           <text>当然是用来打发无聊时间的东西咯</text>
-    </van-collapse-item>
-    <van-collapse-item clickable='true' name="2">
+    </van-collapse-item> -->
+    <!-- <van-collapse-item clickable='true' name="2">
           <view slot="title" style="display: flex; align-items: center">长安酒馆能做什么<van-icon style="margin-left:5rpx;" color="#1989fa" name="question-o" /></view>
           <text>什么也不做，你开心就好</text>
-    </van-collapse-item>
-     <van-collapse-item clickable='true' name="3">
+    </van-collapse-item> -->
+     <!-- <van-collapse-item clickable='true' name="3">
           <view slot="title" style="display: flex; align-items: center">长安酒馆有哪些功能<van-icon style="margin-left:5rpx;" color="#1989fa" name="question-o" /></view>
           <text>功能会不断的增加，敬请期待吧</text>
-    </van-collapse-item>
+    </van-collapse-item> -->
     <van-collapse-item clickable='true' name="4">
           <view slot="title" style="display: flex; align-items: center">
           长安酒馆都有谁在维护<van-icon style="margin-left:5rpx;" color="#1989fa" name="question-o" /></view>
-          <text>目前只有一位开发者，风格全凭个人爱好</text>
+          <text>我自己</text>
     </van-collapse-item>
-    <van-collapse-item clickable='true' name="5">
+    <!-- <van-collapse-item clickable='true' name="5">
           <view slot="title" style="display: flex; align-items: center">
           长安酒馆是靠什么赚钱的<van-icon style="margin-left:5rpx;" color="#1989fa" name="question-o" /></view>
           <text>想多了，自费维护状态</text>
-    </van-collapse-item>
+    </van-collapse-item> -->
     <van-collapse-item clickable='true' name="6">
           <view slot="title" style="display: flex; align-items: center">
           长安酒馆是如何更新版本的<van-icon style="margin-left:5rpx;" color="#1989fa" name="question-o" /></view>
@@ -42,6 +45,13 @@
           怎么样联系到长安酒馆的开发者<van-icon style="margin-left:5rpx;" color="#1989fa" name="question-o" /></view>
           <text>邮箱：778277514@QQ.COM</text>
     </van-collapse-item>
+    <van-collapse-item clickable='true' name="10" title="" icon="">
+          <view slot="title" style="display: flex; align-items: center">小程序今后不再更新<van-icon style="margin-left:5rpx;" color="#1989fa" name="question-o" /></view>
+          <text>就像以前有一个人和我说，你做的事情不过是感动自己罢了。</text>
+          <text> 一切都毫无意义。</text>
+         
+    </van-collapse-item>
  </van-collapse>
- <view class="version">
+<view class="version">
 © sonderss V5.1.8</view>
+</view>

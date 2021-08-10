@@ -1,11 +1,9 @@
+
 @font-face {
-  font-family: 'iconfont';  /* project id 1673983 */
-  src: url('//at.alicdn.com/t/font_1673983_rq2sk8629r.eot');
-  src: url('//at.alicdn.com/t/font_1673983_rq2sk8629r.eot?#iefix') format('embedded-opentype'),
-  url('//at.alicdn.com/t/font_1673983_rq2sk8629r.woff2') format('woff2'),
-  url('//at.alicdn.com/t/font_1673983_rq2sk8629r.woff') format('woff'),
-  url('//at.alicdn.com/t/font_1673983_rq2sk8629r.ttf') format('truetype'),
-  url('//at.alicdn.com/t/font_1673983_rq2sk8629r.svg#iconfont') format('svg');
+  font-family: 'iconfont';  /* Project id 1673983 */
+  src: url('//at.alicdn.com/t/font_1673983_cr3pqsky8q4.woff2?t=1628581213328') format('woff2'),
+       url('//at.alicdn.com/t/font_1673983_cr3pqsky8q4.woff?t=1628581213328') format('woff'),
+       url('//at.alicdn.com/t/font_1673983_cr3pqsky8q4.ttf?t=1628581213328') format('truetype');
 }
 .iconfont {
   font-family: "iconfont" !important;
@@ -54,3 +52,13 @@
 .icon-shuma-danfan:before {
   content: "\e603";
 }
+
+.icon-38:before {
+  content: "\e632";
+}
+ 
+
+.icon-General-2-33:before {
+  content: "\e7ca";
+}
+ 
